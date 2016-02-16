@@ -1,0 +1,4 @@
+junit:\
+	org.apache.servicemix.bundles.junit;version=latest
+
+test-reports: test-results

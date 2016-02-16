@@ -1,0 +1,4 @@
+-buildpath:  \
+	../cnf/plugins/org.apache.felix.dependencymanager.annotation-4.0.1.jar;version=file,\
+	org.apache.felix.dependencymanager;version=4,\
+	osgi.core;version=6
