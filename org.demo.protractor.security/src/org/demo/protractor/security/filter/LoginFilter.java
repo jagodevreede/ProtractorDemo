@@ -8,6 +8,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,6 +32,13 @@ public class LoginFilter implements Filter {
 			ServletException {
 		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse)res;
+		
+		Cookie[] cookies = request.getCookies();
+		for (Cookie c : cookies) {
+			if (LoginService.COOKIE_NAME.equals(c.getName())) {
+				loginService.verify(c.getValue());
+			}
+		}
         
         chain.doFilter(request, response);
 	}

@@ -31,7 +31,17 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public void verify(String token) {
-		throw new WebApplicationException(Status.FORBIDDEN);
+		getUserByToken(token);
+	}
+	
+	@Override
+	public void logout(String token) {
+		User user = getUserByToken(token);
+		user.token = null;
+	}
+	
+	private User getUserByToken(String token) {
+		return users.values().stream().filter(u -> token.equals(u.token)).findAny().orElseThrow(() -> new WebApplicationException(Status.FORBIDDEN));
 	}
 
 	@Override
