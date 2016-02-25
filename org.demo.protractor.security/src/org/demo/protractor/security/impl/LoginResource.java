@@ -35,6 +35,9 @@ public class LoginResource {
 	}
 	
 	public void register(User user) {
+		// Prevent users to bypass stuff
+		user.verified = false;
+		user.token = null;
 		loginService.createUser(user);
 	}
 }
