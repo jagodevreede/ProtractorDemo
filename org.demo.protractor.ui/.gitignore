@@ -1,2 +1,12 @@
 /bin/
+/node_modules
+/build
+/report
+/typings
+.DS_Store
+app/**/*.js
+app/**/*.js.map
+test/**/*.js
+test/**/*.js.map
+assets/styles/*.css
 /generated/

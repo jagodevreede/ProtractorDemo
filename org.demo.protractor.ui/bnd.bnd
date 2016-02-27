@@ -1,4 +1,4 @@
 X-Web-Resource-Version: 1.1
-X-Web-Resource: /;static
+X-Web-Resource: /;app
 X-Web-Resource-Default-Page: index.html
-Include-Resource: static=static
+Include-Resource: app=app
