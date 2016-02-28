@@ -29,7 +29,7 @@ public class CorsFilter implements Filter{
 		
 		
 		if(!request.getPathInfo().contains("atmosphere")) {
-			response.addHeader("Access-Control-Allow-Origin", "http://localhost:63340");
+			response.addHeader("Access-Control-Allow-Origin", "http://localhost:3000");
 			
 		}
 		

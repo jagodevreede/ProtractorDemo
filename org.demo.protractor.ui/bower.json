@@ -2,10 +2,6 @@
   "name": "angular2-starter",
   "description": "Angular 2 Starter",
   "main": "index.js",
-  "authors": [
-    "Antony Budianto <antonybudianto@gmail.com>"
-  ],
-  "license": "ISC",
   "moduleType": [],
   "homepage": "",
   "ignore": [
