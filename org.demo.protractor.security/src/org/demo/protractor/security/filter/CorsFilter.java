@@ -8,7 +8,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.felix.dm.annotation.api.Component;
@@ -24,17 +23,11 @@ public class CorsFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException,
 			ServletException {
-		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse)res;
+
+		response.addHeader("Access-Control-Allow-Origin", "http://127.0.0.1:3000");
 		
-		
-		if(!request.getPathInfo().contains("atmosphere")) {
-			response.addHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-			
-		}
-		
-		response.addHeader("Access-Control-Expose-Headers", "X-Cache-Date, X-Atmosphere-tracking-id");
-		response.addHeader("Access-Control-Allow-Headers", "Origin, Content-Type, X-Atmosphere-Framework, X-Cache-Date, X-Atmosphere-tracking-id, X-Atmosphere-Transport");
+		response.addHeader("Access-Control-Allow-Headers", "Origin, Content-Type, X-Cache-Date");
         response.setHeader("Access-Control-Allow-Credentials","true");
         response.setHeader("Access-Control-Allow-Methods",
             "GET, POST, PUT, DELETE, OPTIONS, HEAD");

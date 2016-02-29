@@ -31,22 +31,23 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public void verify(String token) {
-		getUserByToken(token);
+		getLoggedInUser(token);
 	}
 	
 	@Override
 	public void logout(String token) {
-		User user = getUserByToken(token);
+		User user = getLoggedInUser(token);
 		user.token = null;
 	}
 	
-	private User getUserByToken(String token) {
-		return users.values().stream().filter(u -> token.equals(u.token)).findAny().orElseThrow(() -> new WebApplicationException(Status.FORBIDDEN));
-	}
-
 	@Override
 	public void createUser(User user) {
 		users.put(user.username.toLowerCase(), user);
+	}
+
+	@Override
+	public User getLoggedInUser(String token) {
+		return users.values().stream().filter(u -> token.equals(u.token)).findAny().orElseThrow(() -> new WebApplicationException(Status.FORBIDDEN));
 	}
 
 }

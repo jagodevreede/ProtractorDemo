@@ -3,11 +3,15 @@ import {RouterOutlet, RouteConfig, RouteDefinition} from 'angular2/router';
 import {APP_ROUTES} from './app.routes';
 import {NavbarComponent} from './navbar/navbar.component';
 import {LoggerService} from './blocks/logger.service';
+import {UserService} from './blocks/user.service';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
 @Component({
     selector: 'main-app',
     templateUrl: 'app/app.html',
-    directives: [RouterOutlet, NavbarComponent]
+    directives: [RouterOutlet, NavbarComponent],
+    providers: [UserService],
+    viewProviders: [HTTP_PROVIDERS]
 })
 @RouteConfig(APP_ROUTES)
 export class AppComponent {

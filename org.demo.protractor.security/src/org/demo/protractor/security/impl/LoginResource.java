@@ -2,8 +2,10 @@ package org.demo.protractor.security.impl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
@@ -13,7 +15,7 @@ import org.apache.felix.dm.annotation.api.ServiceDependency;
 import org.demo.protractor.security.api.LoginService;
 import org.demo.protractor.security.api.User;
 
-@Component
+@Component(provides=Object.class)
 @Path("/login")
 public class LoginResource {
 	
@@ -32,6 +34,12 @@ public class LoginResource {
 	@DELETE
 	public Response logout() {
 		return Response.ok().cookie(new NewCookie(LoginService.COOKIE_NAME, null)).build();
+	}
+	
+	@GET
+	@Produces("application/json")
+	public User getLoggedInUser() {
+		return loginService.getLoggedInUser(request.getParameter(LoginService.COOKIE_NAME));
 	}
 	
 	public void register(User user) {

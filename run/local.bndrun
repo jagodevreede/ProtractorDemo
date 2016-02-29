@@ -19,6 +19,7 @@
 	org.apache.felix.http.servlet-api,\
 	org.apache.felix.http.whiteboard;version='[2.3,3)',\
 	org.amdatu.web.resourcehandler;version='[1.0.9,2)',\
+	org.amdatu.web.rest.wink;version='[2.0.4,2.0.4]',\
 	org.amdatu.web.rest.jaxrs,\
 	org.amdatu.web.rest.doc,\
 	com.fasterxml.jackson.jaxrs.jackson-jaxrs-base,\

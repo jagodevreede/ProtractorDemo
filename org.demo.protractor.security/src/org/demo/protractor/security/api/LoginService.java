@@ -8,4 +8,5 @@ public interface LoginService {
 	void verify(String token);
 	void createUser(User user);
 	void logout(String token);
+	User getLoggedInUser(String token);
 }
