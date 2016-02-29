@@ -1,3 +1,4 @@
+defaultTasks 'clean', 'generateTypescript', 'build'
 /*
  * Master Gradle build script
  *
@@ -7,6 +8,21 @@
 
 import aQute.bnd.build.Workspace
 import aQute.bnd.osgi.Constants
+
+buildscript {
+    repositories {
+        maven {
+            url uri('gradlePluginRepo')
+        }
+    }
+    dependencies {
+        classpath group: 'org.amdatu',
+                   name: 'org.amdatu.typescriptgenerator',
+                version: '1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'typescript-gen-plugin'
 
 /* Add bnd gradle plugin as a script dependency */
 buildscript {
@@ -30,5 +46,6 @@ subprojects {
   def bndProject = bndWorkspace.getProject(name)
   if (bndProject != null) {
     plugins.apply 'biz.aQute.bnd'
+    apply plugin: 'typescript-gen-plugin'
   }
 }

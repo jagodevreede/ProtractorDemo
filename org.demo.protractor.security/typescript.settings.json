@@ -1,0 +1,18 @@
+{
+  "//" : "For use with TypeScript generator https://bitbucket.org/amdatulabs/amdatu-typescript-generator",
+  "folder" : "./org.demo.protractor.security",
+  "classFolder" : "bin",
+  "output" : "org.demo.protractor.ui/app/models",
+  "baseFolder" : "",
+  "clearOutput" : false,
+  "packages" : [ ".*\\.security\\.api" ],
+  "excludePackages" : [ ],
+  "excludePattern" : [
+    ".*Service"
+  ],
+  "types" : { },
+  "mapping" : { },
+  "enumType" : "class",
+  "classType" : "interface",
+  "classPath" : [ ]
+}
