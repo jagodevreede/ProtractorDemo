@@ -80,7 +80,7 @@ function compileTs(files, watchMode) {
         .pipe(sourcemaps.init())
         .pipe(ts(tsProject))
         .on('error', function () {
-            process.exit(1);
+            //process.exit(1);
         });
     return res.js
         .pipe(sourcemaps.write('.', {
