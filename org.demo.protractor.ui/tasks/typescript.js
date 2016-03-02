@@ -62,8 +62,9 @@ function lintTs(files) {
     return gulp.src(files)
         .pipe(tslint())
         .pipe(tslint.report('prose', {
-          summarizeFailureOutput: true
-        }));
+            summarizeFailureOutput: true,
+            emitError: false
+        }))
 }
 
 function compileTs(files, watchMode) {
@@ -75,7 +76,7 @@ function compileTs(files, watchMode) {
         .pipe(tslint())
         .pipe(tslint.report('prose', {
             summarizeFailureOutput: true,
-            emitError: !watchMode
+            emitError: false
         }))
         .pipe(sourcemaps.init())
         .pipe(ts(tsProject))
