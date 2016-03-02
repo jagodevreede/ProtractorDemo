@@ -1,13 +1,16 @@
 /// <reference path='../models/org.demo.protractor.security.api/User' />
 import 'rxjs/Rx';
 import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Http, Headers} from 'angular2/http';
 import {APP_SETTINGS} from '../app.settings';
 
 @Injectable()
 export class UserService {
+    private headers: Headers;
 
     constructor(private http: Http) {
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
     }
 
     getUser() {
@@ -16,6 +19,10 @@ export class UserService {
             .map(res => {
                 return res.json();
             });
+    }
+
+    register(user: User) {
+        return this.http.put(APP_SETTINGS.basedir + 'login', JSON.stringify(user), { headers: this.headers });
     }
 
 }

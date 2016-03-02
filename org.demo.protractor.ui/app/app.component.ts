@@ -5,11 +5,12 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {LoggerService} from './blocks/logger.service';
 import {UserService} from './blocks/user.service';
 import {HTTP_PROVIDERS} from 'angular2/http';
+import {RegisterComponent} from './register/register.component';
 
 @Component({
     selector: 'main-app',
     templateUrl: 'app/app.html',
-    directives: [RouterOutlet, NavbarComponent],
+    directives: [RouterOutlet, NavbarComponent, RegisterComponent],
     providers: [UserService],
     viewProviders: [HTTP_PROVIDERS]
 })

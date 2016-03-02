@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -42,6 +43,7 @@ public class LoginResource {
 		return loginService.getLoggedInUser(request.getParameter(LoginService.COOKIE_NAME));
 	}
 	
+	@PUT
 	public void register(User user) {
 		// Prevent users to bypass stuff
 		user.verified = false;
