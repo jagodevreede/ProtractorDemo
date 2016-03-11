@@ -9,4 +9,5 @@ public interface LoginService {
 	void createUser(User user);
 	void logout(String token);
 	User getLoggedInUser(String token);
+	String activate(String username, String activationtoken);
 }
