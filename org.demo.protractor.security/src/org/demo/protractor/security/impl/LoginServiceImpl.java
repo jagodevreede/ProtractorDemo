@@ -63,6 +63,10 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public User getLoggedInUser(String token) {
+		if(token == null) {
+			throw new WebApplicationException(Status.BAD_REQUEST);
+		}
+			
 		return users.values().stream().filter(u -> token.equals(u.token)).findAny().orElseThrow(() -> new WebApplicationException(Status.NOT_FOUND));
 	}
 
