@@ -42,6 +42,10 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Override
 	public void createUser(User user) {
+		// Prevent users from injecting stuff
+		user.active = false;
+		user.token = null;
+	
 		users.put(user.username.toLowerCase(), user);
 	}
 

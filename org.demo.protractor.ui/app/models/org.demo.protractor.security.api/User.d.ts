@@ -5,6 +5,7 @@ interface User {
     username?: string;
     password?: string;
     email?: string;
-    verified?: boolean;
+    active?: boolean;
+    activationToken?: string;
     token?: string;
 }
