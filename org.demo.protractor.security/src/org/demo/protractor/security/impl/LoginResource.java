@@ -45,9 +45,10 @@ public class LoginResource {
 	
 	@PUT
 	public void register(User user) {
-		// Prevent users to bypass stuff
+		// Prevent users from injecting stuff
 		user.verified = false;
 		user.token = null;
+		
 		loginService.createUser(user);
 	}
 }
