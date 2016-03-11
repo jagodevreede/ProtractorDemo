@@ -6,6 +6,9 @@ import {UserService} from '../blocks/user.service';
 @Component({
     selector: 'navbar',
     templateUrl: 'app/navbar/navbar.html',
+    styleUrls: [
+        'app/navbar/navbar.css'
+    ],
     directives: [RouterLink, CORE_DIRECTIVES]
 })
 export class NavbarComponent {
@@ -15,5 +18,9 @@ export class NavbarComponent {
 
     constructor(private userService: UserService) {
         userService.getUser().subscribe(user => this.user = user, error => this.user = null);
+    }
+
+    signout() {
+        this.userService.logout();
     }
 }

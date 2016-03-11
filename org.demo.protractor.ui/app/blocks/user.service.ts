@@ -25,4 +25,7 @@ export class UserService {
         return this.http.put(APP_SETTINGS.basedir + 'login', JSON.stringify(user), { headers: this.headers });
     }
 
+    logout() {
+        return this.http.delete(APP_SETTINGS.basedir + 'login', { headers: this.headers });
+    }
 }
