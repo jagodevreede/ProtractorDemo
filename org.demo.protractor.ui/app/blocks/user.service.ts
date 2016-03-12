@@ -28,4 +28,8 @@ export class UserService {
     logout() {
         return this.http.delete(APP_SETTINGS.basedir + 'login', { headers: this.headers });
     }
+
+    login(user: User) {
+        return this.http.post(APP_SETTINGS.basedir + 'login', JSON.stringify(user), { headers: this.headers });
+    }
 }

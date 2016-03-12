@@ -16,11 +16,12 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="glyphicon glyphicon-user"></span>
-            <strong>Salman</strong>
+            <strong *ngIf="user">{{user.username}}</strong>
+            <strong *ngIf="!user">Not logged in</strong>
             <span class="glyphicon glyphicon-chevron-down"></span>
           </a>
           <ul class="dropdown-menu">
-            <li>
+            <li *ngIf="user">
               <div class="navbar-login">
                 <div class="row">
                   <div class="col-lg-4">
@@ -29,14 +30,15 @@
                     </p>
                   </div>
                   <div class="col-lg-8">
-                    <p class="text-left"><strong>User Name</strong></p>
-                    <p class="text-left small">crazytodevelop@@gmail.com</p>
+                    <p class="text-left"><strong>{{user.username}}</strong></p>
+                    <p class="text-left small">{{user.email}}</p>
                   </div>
                 </div>
               </div>
             </li>
-            <li class="divider navbar-login-session-bg"></li>
-            <li><span class="clickable" (click)="signout() ">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></span></li>
+            <li *ngIf="user" class="divider navbar-login-session-bg"></li>
+            <li *ngIf="user"><span class="clickable" (click)="signout() ">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></span></li>
+            <li *ngIf="!user"><span class="clickable" (click)="signin() ">Sign In <span class="glyphicon glyphicon-log-in pull-right"></span></span></li>
           </ul>
         </li>
       </ul>

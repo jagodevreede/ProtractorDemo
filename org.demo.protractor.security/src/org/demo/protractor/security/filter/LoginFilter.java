@@ -33,10 +33,13 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse)res;
 		
-		Cookie[] cookies = request.getCookies();
-		for (Cookie c : cookies) {
-			if (LoginService.COOKIE_NAME.equals(c.getName())) {
-				loginService.verify(c.getValue());
+		if (!("POST".equals(request.getMethod()) && request.getRequestURI().contains("login"))) {
+			// Only check if we are not loggin in
+			Cookie[] cookies = request.getCookies();
+			for (Cookie c : cookies) {
+				if (LoginService.COOKIE_NAME.equals(c.getName())) {
+					loginService.verify(c.getValue());
+				}
 			}
 		}
         

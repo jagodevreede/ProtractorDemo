@@ -5,12 +5,14 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.amdatu.email.EmailService;
 import org.amdatu.email.Message;
 import org.apache.felix.dm.annotation.api.Component;
 import org.apache.felix.dm.annotation.api.ServiceDependency;
+import org.apache.felix.dm.annotation.api.Start;
 import org.demo.protractor.security.api.LoginService;
 import org.demo.protractor.security.api.User;
 
@@ -20,6 +22,16 @@ public class LoginServiceImpl implements LoginService {
 	private volatile EmailService emailService;
 	
 	private Map<String, User> users = new HashMap<>();
+	
+	@Start
+	public void start() {
+		User user = new User();
+		user.username = "x";
+		user.password = "x";
+		user.email = "demo@demo.org";
+		user.active = true;
+		users.put(user.username.toLowerCase(), user);
+	}
 	
 	@Override
 	public String login(String username, String password) {
@@ -32,7 +44,7 @@ public class LoginServiceImpl implements LoginService {
 				return user.token;
 			}
 		}
-		throw new WebApplicationException(Status.FORBIDDEN);
+		throw new WebApplicationException(Response.status(Status.FORBIDDEN).entity("User not found or password incorrect").build());
 	}
 
 	@Override
@@ -70,10 +82,10 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public User getLoggedInUser(String token) {
 		if(token == null) {
-			throw new WebApplicationException(Status.BAD_REQUEST);
+			throw new WebApplicationException(Response.status(Status.BAD_REQUEST).entity("No token").build());
 		}
 			
-		return users.values().stream().filter(u -> token.equals(u.token)).findAny().orElseThrow(() -> new WebApplicationException(Status.NOT_FOUND));
+		return users.values().stream().filter(u -> token.equals(u.token)).findAny().orElseThrow(() -> new WebApplicationException(Response.status(Status.NOT_FOUND).entity("User with token not found").build()));
 	}
 
 	@Override
@@ -87,7 +99,7 @@ public class LoginServiceImpl implements LoginService {
 			}
 			return user.token;
 		}
-		throw new WebApplicationException(Status.UNAUTHORIZED);
+		throw new WebApplicationException(Response.status(Status.UNAUTHORIZED).entity("Wrong user or activation token").build());
 	}
 
 }
