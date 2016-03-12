@@ -7,9 +7,10 @@ import java.util.UUID;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response.Status;
 
+import org.amdatu.email.EmailService;
+import org.amdatu.email.Message;
 import org.apache.felix.dm.annotation.api.Component;
 import org.apache.felix.dm.annotation.api.ServiceDependency;
-import org.demo.protractor.security.api.EmailService;
 import org.demo.protractor.security.api.LoginService;
 import org.demo.protractor.security.api.User;
 
@@ -55,10 +56,15 @@ public class LoginServiceImpl implements LoginService {
 
 		users.put(user.username.toLowerCase(), user);
 		
-		emailService.sendEmail(user.email, "Please activate your account", 
-				"Thanks for signing up! Please go to the following link to activate your account:\n"
-				+ "http://127.0.0.1:8080/login/activate?username=" + user.username + "&activationtoken=" + user.activationToken + "\n\n"
-				+ "If you did not sign up, please ignore this email.");
+		Message message = Message.Builder.create()
+				.from("protractor@demo.org")
+				.recipient(user.email)
+				.subject("Please activate your account")
+				.htmlBody("Thanks for signing up! Please go to the following link to activate your account:\n"
+						+ "http://127.0.0.1:8080/login/activate?username=" + user.username + "&activationtoken=" + user.activationToken + "\n\n"
+						+ "If you did not sign up, please ignore this email.").build();
+		
+		emailService.send(message);
 	}
 
 	@Override

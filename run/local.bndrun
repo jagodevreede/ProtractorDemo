@@ -29,5 +29,10 @@
 	org.apache.felix.gogo.shell,\
 	com.google.guava;version='[19.0,19.0]',\
 	org.demo.protractor.security;version=latest,\
-	org.demo.protractor.ui;version=latest
--runsystempackages: sun.misc
+	org.demo.protractor.ui;version=latest,\
+	org.amdatu.email;version=1.0.1,\
+	org.amdatu.email.smtp;version=1.0.2,\
+	org.amdatu.configurator.autoconf;version=1.0.1
+-runsystempackages: sun.misc,sun.security.util
+-runproperties: \
+	org.amdatu.configurator.autoconf.dir=config

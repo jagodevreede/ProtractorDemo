@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.1.0">
+    <OCD id="ocd" name="ocd">
+      <AD id="smtp-from-name" type="String" />
+      <AD id="smtp-host" type="String" />
+      <AD id="smtp-port" type="String" />
+      <AD id="smtp-use-ssl" type="String" />
+      <AD id="smtp-user" type="String" />
+      <AD id="smtp-password" type="String" />
+    </OCD>
+    <Designate pid="org.amdatu.email.smtp" bundle="osgi-dp:org.amdatu.email.smtp">
+      <Object ocdref='ocd'>
+	     <Attribute adref='smtp-from-name'>
+	        <Value><![CDATA[Protractor demo email]]></Value>
+	      </Attribute>
+	      <Attribute adref='smtp-host'>
+	        <Value><![CDATA[smtp.gmail.com]]></Value>
+	      </Attribute>
+	      <Attribute adref='smtp-port'>
+	        <Value><![CDATA[465]]></Value>
+	      </Attribute>
+	      <Attribute adref='smtp-use-ssl'>
+	        <Value><![CDATA[true]]></Value>
+	      </Attribute>
+	      <Attribute adref='smtp-user'>
+	        <Value><![CDATA[xxxxxxxxxxx@gmail.com]]></Value>
+	      </Attribute>
+	      <Attribute adref='smtp-password'>
+	        <Value><![CDATA[xxxxxxxxxxx]]></Value>
+	      </Attribute>
+    </Object>
+    </Designate>
+  </metatype:MetaData>

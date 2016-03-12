@@ -4,6 +4,7 @@
 	osgi.core;version=6,\
 	com.google.guava;version=19.0,\
 	org.amdatu.web.rest.jaxrs,\
+	org.amdatu.email;version=1.0.1,\
 	org.apache.felix.http.servlet-api;version=1.1
 Bundle-Version: 1.0.0
 Private-Package: \
