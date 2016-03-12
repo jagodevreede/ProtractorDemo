@@ -60,8 +60,8 @@ public class LoginServiceImpl implements LoginService {
 				.from("protractor@demo.org")
 				.recipient(user.email)
 				.subject("Please activate your account")
-				.htmlBody("Thanks for signing up! Please go to the following link to activate your account:\n"
-						+ "http://127.0.0.1:8080/login/activate?username=" + user.username + "&activationtoken=" + user.activationToken + "\n\n"
+				.htmlBody("Thanks for signing up! Please go to the following link to activate your account:<br/><br/>"
+						+ "<a id='activation-link-protractor-demo' href='http://127.0.0.1:8080/login/activate?username=" + user.username + "&activationtoken=" + user.activationToken + "'>Activate</a><br/><br/>"
 						+ "If you did not sign up, please ignore this email.").build();
 		
 		emailService.send(message);
