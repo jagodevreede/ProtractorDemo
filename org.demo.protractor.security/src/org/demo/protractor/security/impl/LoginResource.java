@@ -36,7 +36,8 @@ public class LoginResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response login(User user) {
 		String token = loginService.login(user.username, user.password);
-		return Response.ok().cookie(new NewCookie(LoginService.COOKIE_NAME, token)).build();
+		User loggedInUser = loginService.getLoggedInUser(token);
+		return Response.ok(loggedInUser).cookie(new NewCookie(LoginService.COOKIE_NAME, token)).build();
 	}
 
 	@DELETE

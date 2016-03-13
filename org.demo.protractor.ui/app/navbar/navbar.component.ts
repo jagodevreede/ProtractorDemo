@@ -1,6 +1,6 @@
 import {Component, Input} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
-import {RouterLink, RouteDefinition} from 'angular2/router';
+import {RouterLink, RouteDefinition, Router} from 'angular2/router';
 import {UserService} from '../blocks/user.service';
 
 @Component({
@@ -16,11 +16,18 @@ export class NavbarComponent {
     @Input() routes: RouteDefinition[];
     user: User;
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService, private router: Router) {
         userService.getUser().subscribe(user => this.user = user, error => this.user = null);
+        userService.userChangeEvent.subscribe((newUser) => this.user = newUser);
     }
 
     signout() {
-        this.userService.logout();
+        this.userService.logout().subscribe(data => {
+            this.router.navigate(['Home']);
+        }, error => console.error('Could not logout user.'));
+    }
+
+    signin() {
+        this.router.navigate(['Login']);
     }
 }

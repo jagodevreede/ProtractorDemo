@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {UserService} from '../blocks/user.service';
 
 @Component({
     selector: 'home',
@@ -8,4 +9,10 @@ import {Component} from 'angular2/core';
     ]
 })
 export class HomeComponent {
+    user: User;
+    constructor(private userService: UserService) {
+        userService.getUser().subscribe((u) => {
+            this.user = u;
+        }, () => this.user = null);
+    }
 }

@@ -17,7 +17,7 @@ import org.apache.felix.dm.annotation.api.Property;
 import org.apache.felix.dm.annotation.api.ServiceDependency;
 import org.demo.protractor.security.api.LoginService;
 
-@Component(properties=@Property(name="pattern", values=".*"))
+@Component(properties=@Property(name="pattern", value=".*"))
 public class LoginFilter implements Filter {
 	
 	@ServiceDependency
@@ -33,8 +33,8 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse)res;
 		
-		if (!("POST".equals(request.getMethod()) && request.getRequestURI().contains("login"))) {
-			// Only check if we are not loggin in
+		if (!request.getRequestURI().contains("login")) {
+			// Only check the non login resources
 			Cookie[] cookies = request.getCookies();
 			for (Cookie c : cookies) {
 				if (LoginService.COOKIE_NAME.equals(c.getName())) {
