@@ -10,7 +10,7 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li *ngFor="#route of routes"><a [routerLink]="[route.name]">{{route.name}}</a></li>
+        <li *ngFor="#route of routes"><a [routerLink]="[route.name]" *ngIf="!user || (user && route.name != 'Register')">{{route.name}}</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
