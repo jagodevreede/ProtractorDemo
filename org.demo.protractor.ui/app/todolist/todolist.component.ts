@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
-import {Todo} from './todo.model';
+import {TodoList} from './todoList.model';
 
 @Component({
     selector: 'todolist',
@@ -8,23 +8,9 @@ import {Todo} from './todo.model';
     directives: [CORE_DIRECTIVES]
 })
 export class TodolistComponent {
-    public todo: Todo;
-    private list: Todo[];
+    public todos: TodoList[] = [];
 
-    constructor() {
-        this.todo = new Todo('Add me to list!', false);
-        this.list = [
-            new Todo('Its cool'),
-            new Todo('Hello', true)
-        ];
-    }
-
-    addTodo() {
-        this.list.push(Todo.clone(this.todo));
-        this.todo.clear();
-    }
-
-    delTodo(index: number) {
-        this.list.splice(index, 1);
+    public addNewList() {
+        this.todos.push(new TodoList());
     }
 }
