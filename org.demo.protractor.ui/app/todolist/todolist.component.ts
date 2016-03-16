@@ -10,7 +10,15 @@ import {TodoList} from './todoList.model';
 export class TodolistComponent {
     public todos: TodoList[] = [];
 
+    constructor() {
+        this.addNewList();
+    }
+
     public addNewList() {
         this.todos.push(new TodoList());
+    }
+
+    public removeList(index: number) {
+        this.todos.splice(index, 1);
     }
 }
