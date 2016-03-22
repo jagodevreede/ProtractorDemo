@@ -20,12 +20,15 @@
       <navbar [routes]="appRoutes" brand="Angular 2 Starter"></navbar>
       <div class="container" style="margin-top: 100px;">
         <router-outlet></router-outlet>
+
       </div>
     </main-app>
 
+    <ui-view></ui-view>
+
     <!-- build:js assets/bundle.js -->
     <!-- bower:js -->
-    <script src="/bower_components/angular/angular.js"></script>
+    <!--script src="/bower_components/angular/angular.js"></--script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>

@@ -62,12 +62,7 @@ gulp.task('fonts', function () {
 /* Wiredep the bower main files to index file */
 gulp.task('wiredep', ['sass'], function () {
     return gulp.src(config.index)
-        .pipe(inject(gulp.src(mainBowerFiles(), {
-            read: false
-        }), {
-            name: 'bower'
-        }))
-        .pipe(inject(
+        pipe(inject(
             gulp.src(config.assetsPath.styles + 'main.css', {
                 read: false
             })
