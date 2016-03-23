@@ -16,15 +16,12 @@
   </head>
   <body>
     <main-app>
-      <i class="center-fix main-spinner fa fa-spin fa-spinner"></i>
-      <navbar [routes]="appRoutes" brand="Angular 2 Starter"></navbar>
+      <!--i class="center-fix main-spinner fa fa-spin fa-spinner"></i-->
+      <navbar></navbar>
       <div class="container" style="margin-top: 100px;">
-        <router-outlet></router-outlet>
-
+        <ui-view></ui-view>
       </div>
     </main-app>
-
-    <ui-view></ui-view>
 
     <!-- build:js assets/bundle.js -->
     <!-- bower:js -->

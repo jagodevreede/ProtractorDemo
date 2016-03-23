@@ -1,16 +1,19 @@
-import {Component, Input} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
-import {RouterLink, RouteDefinition, Router} from 'angular2/router';
-import {UserService} from '../blocks/user.service';
 
-@Component({
-    selector: 'navbar',
-    templateUrl: 'app/navbar/navbar.html',
-    styleUrls: [
-        'app/navbar/navbar.css'
-    ],
-    directives: [RouterLink, CORE_DIRECTIVES]
-})
+export class Navbar {
+    public static $inject = ['$state', '$rootScope'];
+    constructor($state,$rootScope) {
+        let directive: angular.IDirective = {};
+        directive.restrict = 'E';
+        directive.templateUrl = 'app/navbar/navbar.html';
+        directive.link = function($scope, element, attrs) {
+            $scope.states = $state.get();
+          //  userService.getUser().subscribe(user => this.user = user, error => this.user = null);
+          //  userService.userChangeEvent.subscribe((newUser) => this.user = newUser);
+        };
+        return directive;
+    }
+}
+/*
 export class NavbarComponent {
     @Input() brand: string;
     @Input() routes: RouteDefinition[];
@@ -31,3 +34,4 @@ export class NavbarComponent {
         this.router.navigate(['Login']);
     }
 }
+*/
