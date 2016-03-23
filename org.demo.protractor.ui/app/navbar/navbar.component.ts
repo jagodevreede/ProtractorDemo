@@ -1,9 +1,14 @@
+import {UserService} from "../blocks/user.service";
 class NavbarController {
 
-    static $inject = ['$state', '$rootScope'];
+    static $inject = ['$state', '$rootScope', 'userService'];
     states;
-    constructor($state, $rootScope) {
+    user: User;
+    constructor($state, $rootScope, userService: UserService) {
         this.states = $state.get();
+        userService.getUser().then((u) => {
+            this.user = u;
+        });
     }
 
 }
