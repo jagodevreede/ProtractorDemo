@@ -6,11 +6,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a target="_blank" href="#" class="navbar-brand">{{brand}}</a>
+      <a ui-sref="home" class="navbar-brand">Angular Starter</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li *ngFor="#route of routes"><a [routerLink]="[route.name]" *ngIf="!user || (user && route.name != 'Register')">{{route.name}}</a></li>
+        <li ng-repeat="state in navCtrl.states"><a ui-sref="{{state.name}}" ng-if="state.name && (!user || (user && state.name != 'Register'))">{{state.name}}</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

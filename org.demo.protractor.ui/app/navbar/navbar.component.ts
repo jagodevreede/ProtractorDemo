@@ -1,12 +1,21 @@
+class NavbarController {
+
+    static $inject = ['$state', '$rootScope'];
+    states;
+    constructor($state, $rootScope) {
+        this.states = $state.get();
+    }
+
+}
 
 export class Navbar {
-    public static $inject = ['$state', '$rootScope'];
-    constructor($state,$rootScope) {
+    constructor() {
         let directive: angular.IDirective = {};
         directive.restrict = 'E';
         directive.templateUrl = 'app/navbar/navbar.html';
+        directive.controller = NavbarController;
+        directive.controllerAs = 'navCtrl';
         directive.link = function($scope, element, attrs) {
-            $scope.states = $state.get();
           //  userService.getUser().subscribe(user => this.user = user, error => this.user = null);
           //  userService.userChangeEvent.subscribe((newUser) => this.user = newUser);
         };
