@@ -1,3 +1,3 @@
 export var APP_SETTINGS = {
-    basedir: 'http://localhost:8080/'
+    basedir: 'http://127.0.0.1:8080/'
 };

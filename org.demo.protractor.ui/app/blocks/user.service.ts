@@ -3,14 +3,16 @@ import {APP_SETTINGS} from '../app.settings';
 
 export class UserService {
     static $inject = ['$http', '$rootScope'];
-    private currentUser: User;
+    currentUser: User;
 
-    constructor(private $http: angular.IHttpService, $rootScope) {
+    constructor(private $http: angular.IHttpService, private $rootScope) {
     }
 
     getUser() {
         return this.$http.get(APP_SETTINGS.basedir + 'login').then((res) => {
             return this.changeUser(res.data);
+        }, () => {
+            this.changeUser(null);
         });
     }
 
@@ -34,6 +36,7 @@ export class UserService {
             return user;
         }
         this.currentUser = user;
+        this.$rootScope.$emit('userChange', user);
         return user;
     }
 }

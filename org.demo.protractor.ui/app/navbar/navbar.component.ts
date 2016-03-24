@@ -4,11 +4,24 @@ class NavbarController {
     static $inject = ['$state', '$rootScope', 'userService'];
     states;
     user: User;
-    constructor($state, $rootScope, userService: UserService) {
+    constructor(private $state, $rootScope, private userService: UserService) {
         this.states = $state.get();
         userService.getUser().then((u) => {
             this.user = u;
         });
+        $rootScope.$on('userChange', () => {
+            this.user = userService.currentUser;
+        });
+    }
+
+    signout() {
+        this.userService.logout().then(data => {
+            this.$state.go('Home');
+        }, error => console.error('Could not logout user.'));
+    }
+
+    signin() {
+        this.$state.go('Login');
     }
 
 }
@@ -27,25 +40,4 @@ export class Navbar {
         return directive;
     }
 }
-/*
-export class NavbarComponent {
-    @Input() brand: string;
-    @Input() routes: RouteDefinition[];
-    user: User;
 
-    constructor(private userService: UserService, private router: Router) {
-        userService.getUser().subscribe(user => this.user = user, error => this.user = null);
-        userService.userChangeEvent.subscribe((newUser) => this.user = newUser);
-    }
-
-    signout() {
-        this.userService.logout().subscribe(data => {
-            this.router.navigate(['Home']);
-        }, error => console.error('Could not logout user.'));
-    }
-
-    signin() {
-        this.router.navigate(['Login']);
-    }
-}
-*/

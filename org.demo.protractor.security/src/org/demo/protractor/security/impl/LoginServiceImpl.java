@@ -44,7 +44,7 @@ public class LoginServiceImpl implements LoginService {
 				return user.token;
 			}
 		}
-		throw new WebApplicationException(Response.status(Status.FORBIDDEN).entity("User not found or password incorrect").build());
+		throw new WebApplicationException(Response.status(Status.FORBIDDEN).entity("{\"msg\":\"User not found or password incorrect\"}").build());
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class LoginServiceImpl implements LoginService {
 				.recipient(user.email)
 				.subject("Please activate your account")
 				.htmlBody("Thanks for signing up! Please go to the following link to activate your account:<br/><br/>"
-						+ "<a id='activation-link-protractor-demo' href='http://127.0.0.1:8080/login/activate?username=" + user.username + "&activationtoken=" + user.activationToken + "'>Activate</a><br/><br/>"
+						+ "<a id=\"activation-link-protractor-demo\" href=\"http://127.0.0.1:8080/login/activate?username=" + user.username + "&activationtoken=" + user.activationToken + "\">Activate</a><br/><br/>"
 						+ "If you did not sign up, please ignore this email.").build();
 		
 		emailService.send(message);
@@ -82,10 +82,10 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public User getLoggedInUser(String token) {
 		if(token == null) {
-			throw new WebApplicationException(Response.status(Status.BAD_REQUEST).entity("No token").build());
+			throw new WebApplicationException(Response.status(Status.BAD_REQUEST).entity("{\"msg\":\"No token\"}").build());
 		}
 			
-		return users.values().stream().filter(u -> token.equals(u.token)).findAny().orElseThrow(() -> new WebApplicationException(Response.status(Status.NOT_FOUND).entity("User with token not found").build()));
+		return users.values().stream().filter(u -> token.equals(u.token)).findAny().orElseThrow(() -> new WebApplicationException(Response.status(Status.NOT_FOUND).entity("{\"msg\":\"User with token not found\"}").build()));
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class LoginServiceImpl implements LoginService {
 			}
 			return user.token;
 		}
-		throw new WebApplicationException(Response.status(Status.UNAUTHORIZED).entity("Wrong user or activation token").build());
+		throw new WebApplicationException(Response.status(Status.UNAUTHORIZED).entity("{\"msg\":\"Wrong user or activation token\"}").build());
 	}
 
 }
