@@ -1,4 +1,4 @@
-import {UserService} from "../blocks/user.service";
+import {UserService} from '../blocks/user.service';
 class NavbarController {
 
     static $inject = ['$state', '$rootScope', 'userService'];
