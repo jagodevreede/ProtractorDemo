@@ -10,6 +10,11 @@ ngModule.config(['$stateProvider', '$urlRouterProvider',
             templateUrl: 'app/home/home.html',
             controller: 'HomeCtrl as homeCtrl'
         })
+        .state('Register', {
+            url: '/register',
+            templateUrl: 'app/register/register.html',
+            controller: 'RegisterCtrl as registerCtrl'
+        })
         .state('Login', {
             url: '/login',
             templateUrl: 'app/login/login.html',

@@ -5,7 +5,7 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {LoggerService} from './blocks/logger.service';
 import {UserService} from './blocks/user.service';
 import {HTTP_PROVIDERS} from 'angular2/http';
-import {RegisterComponent} from './register/register.component';
+import {RegisterComponent} from './register/register.ctrl.ts';
 
 @Component({
     selector: 'main-app',
