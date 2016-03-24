@@ -1,13 +1,6 @@
-import {Component} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
 import {TodoList} from './todoList.model';
 
-@Component({
-    selector: 'todolist',
-    templateUrl: 'app/todolist/todolist.html',
-    directives: [CORE_DIRECTIVES]
-})
-export class TodolistComponent {
+class TodolistCtrl {
     public todos: TodoList[] = [];
 
     constructor() {
@@ -22,3 +15,5 @@ export class TodolistComponent {
         this.todos.splice(index, 1);
     }
 }
+
+export = TodolistCtrl;

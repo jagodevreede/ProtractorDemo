@@ -8,7 +8,7 @@ ComponentFixture
 } from 'angular2/testing';
 import { Component } from 'angular2/core';
 import { Todo } from './todo.model';
-import { TodolistComponent } from './todolist.component';
+import { TodolistComponent } from './todolist.ctrl.ts';
 
 @Component({
     selector: 'test',

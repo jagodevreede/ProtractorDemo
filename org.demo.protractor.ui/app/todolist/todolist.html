@@ -17,20 +17,20 @@
       border-left: 5px solid orange; /* orange */
     }
 </style>
-<button type="submit" class="btn btn-primary" (click)="addNewList()">Add new To Do List</button>
-<div class="panel panel-default" *ngFor="#todoList of todos; #i=index">
+<button type="submit" class="btn btn-primary" ng-click="todolistCtrl.addNewList()">Add new To Do List</button>
+<div class="panel panel-default" ng-repeat="todoList in todolistCtrl.todos">
   <div class="panel-heading">
-    <h3 class="panel-title">To Do List ({{ i + 1 }}) &nbsp;<span class="badge">{{todoList.list.length}}</span><span (click)="removeList(i)" class="pull-right glyphicon glyphicon-remove"></span></h3>
+    <h3 class="panel-title">To Do List ({{ $index + 1 }}) &nbsp;<span class="badge">{{todoList.list.length}}</span><span ng-click="todolistCtrl.removeList($index)" class="pull-right glyphicon glyphicon-remove"></span></h3>
   </div>
   <div class="panel-body">
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <form (ngSubmit)="todoList.addTodo()" #todoForm="ngForm">
+                <form ng-submit="todoList.addTodo()" name="form">
                     <label for="todo">To Do</label>
-                    <span [hidden]="name.valid" class="badge badge-warning">Required</span>
+                    <span ng-hide="form.name.$valid" class="badge badge-warning">Required</span>
                     <div class="form-inline">
-                        <input required [(ngModel)]="todoList.todo.name" ngControl="name" #name="ngForm" id="todo" type="text" class="form-control" size="50">
+                        <input required ng-model="todoList.todo.name" name="name" id="todo" type="text" class="form-control" size="50">
                         <button type="submit" class="btn btn-primary">Add</button>
                     </div>
                 </form>
@@ -40,9 +40,9 @@
     <div class="row">
         <div class="col-md-5">
             <ul class="list-group">
-                <li *ngFor="#todo of todoList.list; #i=index" class="list-group-item">
-                <span title="Remove todo" class="badge" (click)="todoList.delTodo(i) ">x</span>
-                <label><input type="checkbox" [(ngModel)]="todo.done"> {{todo.name}}</label>
+                <li ng-repeat="todo in todoList.list" class="list-group-item">
+                <span title="Remove todo" class="badge" ng-click="todoList.delTodo($index)">x</span>
+                <label><input type="checkbox" ng-model="todo.done"> {{todo.name}}</label>
                 </li>
             </ul>
         </div>
