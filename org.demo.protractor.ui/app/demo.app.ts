@@ -1,6 +1,7 @@
 /// <amd-dependency path="angular-ui-router"/>
 /// <amd-dependency path="angular-sanitize"/>
 /// <amd-dependency path="angular-drag-drop-lists"/>
+/// <amd-dependency path="ng-file-upload"/>
 
 /// <amd-dependency path="./app.routes"/>
 
@@ -13,7 +14,7 @@ import RegisterCtrl = require('./register/register.ctrl');
 import TodolistCtrl = require('./todolist/todolist.ctrl');
 
 let applicationName = 'protractor-ng1-demo';
-let app: angular.IModule = angular.module(applicationName, ['demo.routes', 'dndLists']);
+let app: angular.IModule = angular.module(applicationName, ['demo.routes', 'dndLists', 'ngFileUpload']);
 
 app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.withCredentials = true;

@@ -35,6 +35,11 @@
                     </div>
                 </form>
             </div>
+            <div class="button" ngf-select ng-model="todoList.file" name="file" ngf-pattern="'image/*'"
+                 ngf-accept="'image/*'" ngf-max-size="20MB">Select a image</div>
+            <span ng-if="todoList.file" ng-bind="todoList.file.name"></span>
+            <button ng-if="todoList.file" ng-click="todolistCtrl.upload(todoList)">Upload</button>
+            <img ng-if="todoList.imageid" ng-src="{{todoList.imageid}}" width="100px" height="100px"/>
         </div>
     </div>
     <div class="row">

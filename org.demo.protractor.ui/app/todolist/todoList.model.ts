@@ -3,6 +3,8 @@ import {Todo} from './todo.model';
 export class TodoList {
     public list: Todo[] = [];
     public todo: Todo;
+    public file;
+    public imageid;
 
     constructor() {
         this.todo = new Todo('Add me to list!', false);
