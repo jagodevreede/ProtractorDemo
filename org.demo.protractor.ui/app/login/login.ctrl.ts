@@ -3,8 +3,8 @@ import {UserService} from '../blocks/user.service';
 class LoginCtrl {
     static $inject = ['userService', '$state'];
     user: User = {
-        username: 'x',
-        password: 'x',
+        username: '',
+        password: '',
     };
     constructor(private userService: UserService, private $state) {
 

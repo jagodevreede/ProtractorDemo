@@ -2,9 +2,9 @@ import {UserService} from '../blocks/user.service';
 
 class RegisterCtrl {
     user: User = {
-        username: 'x',
-        password: 'x',
-        email: 'x@x.com'
+        username: '',
+        password: '',
+        email: ''
     };
     constructor(private userService: UserService) {
 
