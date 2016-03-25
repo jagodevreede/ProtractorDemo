@@ -15,7 +15,7 @@ var typingFiles = [
 ];
 var tsUnitFiles = [].concat(config.tsTestFiles.unit);
 var tsE2EFiles = [].concat(config.tsTestFiles.e2e, config.tsTestFiles.page);
-var tsFiles = [].concat(config.tsFiles, tsUnitFiles, tsE2EFiles);
+var tsFiles = [].concat(config.tsFiles, tsUnitFiles);
 
 /* Watch changed typescripts file and compile it */
 gulp.task('watch-ts', function () {

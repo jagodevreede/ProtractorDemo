@@ -15,5 +15,8 @@ exports.config = {
     jasmineNodeOpts: {
         showColors: true,
         defaultTimeoutInterval: 60000
+    },
+    onPrepare: function() {
+       browser.get('/');
     }
 };
