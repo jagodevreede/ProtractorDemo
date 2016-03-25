@@ -14,6 +14,10 @@ describe('Login page', () => {
         expect(navBar.userNameLabel.getText()).toBe('Not logged in');
     });
 
+    it('should not resister in the navigation', () => {
+        expect(navBar.getNavigation('Register').isPresent()).toBeTruthy();
+    });
+
     it('should be able to login user x', () => {
         page.username.sendKeys('x');
         page.password.sendKeys('x');
@@ -25,9 +29,15 @@ describe('Login page', () => {
         expect(page.isOpen()).toBeFalsy();
     });
 
+    it('should not have resister anymore', () => {
+        expect(navBar.getNavigation('Register').isPresent()).toBeFalsy();
+    });
+
     it('should be able to logout the user', () => {
         navBar.userNameLabel.click();
         navBar.singInOrOutButton.click();
         expect(navBar.userNameLabel.getText()).toBe('Not logged in');
     });
+
+    afterEach(page.checkSpecPassed);
 });
