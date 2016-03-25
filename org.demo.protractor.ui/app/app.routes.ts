@@ -1,6 +1,6 @@
 import angular = require('angular');
 
-var ngModule: angular.IModule = angular.module('demo.routes', ['ui.router']);
+let ngModule: angular.IModule = angular.module('demo.routes', ['ui.router']);
 
 ngModule.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
