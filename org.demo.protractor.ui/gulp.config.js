@@ -2,7 +2,7 @@ module.exports = function () {
     var root = '';
     var app = root + 'app/';
     var test = root + 'test/';
-    var testHelper = test + 'test-helpers/';
+    var page = test + 'page/';
     var e2e = test + 'e2e/';
     var assets = root + 'assets/';
     var assetsPath = {
@@ -17,7 +17,7 @@ module.exports = function () {
     var tsTestFiles = {
         unit: [app + '**/*.spec.ts'],
         e2e: [e2e + '**/*.ts'],
-        helper: [testHelper + '**/*.ts']
+        page: [page + '**/*.ts']
     };
     var build = {
         path: 'build/',
@@ -94,7 +94,7 @@ module.exports = function () {
         root: root,
         app: app,
         test: test,
-        testHelper: testHelper,
+        page: page,
         e2e: e2e,
         e2eConfig: e2eConfig,
         assets: assets,

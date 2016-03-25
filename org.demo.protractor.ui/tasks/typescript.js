@@ -7,13 +7,14 @@ var path = require('path');
 
 /* Initialize TS Project */
 var tsProject = ts.createProject(config.root + 'tsconfig.json');
+var e2eTsProject = ts.createProject(config.root + 'tsconfig-e2e.json');
 var typingFiles = [
     'typings/main.d.ts',
     'typings/main/*.d.ts',
     'node_modules/angular2/typings/browser.d.ts'
 ];
-var tsUnitFiles = [].concat(config.tsTestFiles.unit, config.tsTestFiles.helper);
-var tsE2EFiles = [].concat(config.tsTestFiles.e2e, config.tsTestFiles.helper);
+var tsUnitFiles = [].concat(config.tsTestFiles.unit);
+var tsE2EFiles = [].concat(config.tsTestFiles.e2e, config.tsTestFiles.page);
 var tsFiles = [].concat(config.tsFiles, tsUnitFiles, tsE2EFiles);
 
 /* Watch changed typescripts file and compile it */
@@ -38,7 +39,7 @@ gulp.task('tsc-unit', ['clean-ts-test'], function () {
 });
 
 gulp.task('tsc-e2e', ['clean-ts-test'], function () {
-    return compileTs(tsE2EFiles);
+    return compileTsWithProject(e2eTsProject, tsE2EFiles);
 });
 
 /* Lint typescripts */
@@ -68,6 +69,10 @@ function lintTs(files) {
 }
 
 function compileTs(files, watchMode) {
+    return compileTsWithProject(tsProject, files, watchMode);
+}
+
+function compileTsWithProject(project, files, watchMode) {
     watchMode = watchMode || false;
     var allFiles = [].concat(files, typingFiles);
     var res = gulp.src(allFiles, {
@@ -79,7 +84,7 @@ function compileTs(files, watchMode) {
             emitError: false
         }))
         .pipe(sourcemaps.init())
-        .pipe(ts(tsProject))
+        .pipe(ts(project))
         .on('error', function () {
             //process.exit(1);
         });
