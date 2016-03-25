@@ -22,7 +22,7 @@
   <div class="panel-heading">
     <h3 class="panel-title">To Do List ({{ $index + 1 }}) &nbsp;<span class="badge">{{todoList.list.length}}</span><span ng-click="todolistCtrl.removeList($index)" class="pull-right glyphicon glyphicon-remove"></span></h3>
   </div>
-  <div class="panel-body">
+  <div class="panel-body todo-list">
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
@@ -39,10 +39,15 @@
     </div>
     <div class="row">
         <div class="col-md-5">
-            <ul class="list-group">
-                <li ng-repeat="todo in todoList.list" class="list-group-item">
+            <ul class="list-group" dnd-list="todoList.list">
+                <li ng-repeat="item in todoList.list"
+                    class="list-group-item"
+                    dnd-draggable="item"
+                    dnd-moved="todoList.list.splice($index, 1)"
+                    dnd-effect-allowed="move"
+                    dnd-selected="models.selected = item">
                 <span title="Remove todo" class="badge" ng-click="todoList.delTodo($index)">x</span>
-                <label><input type="checkbox" ng-model="todo.done"> {{todo.name}}</label>
+                <label><input type="checkbox" ng-model="todo.done"> {{item.name}}</label>
                 </li>
             </ul>
         </div>

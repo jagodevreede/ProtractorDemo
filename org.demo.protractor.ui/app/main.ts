@@ -5,7 +5,7 @@ require.config({
         'bootstrap': 'bower_components/bootswatch-dist/js/bootstrap',
         'angular': 'bower_components/angular/angular',
         'angular-sanitize': 'bower_components/angular-sanitize/angular-sanitize',
-        'angular-route': 'bower_components/angular-route/angular-route.min',
+        'angular-drag-drop-lists': 'bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists',
         'angular-ui-router': 'bower_components/angular-ui-router/release/angular-ui-router'
     },
     shim: {
@@ -17,6 +17,9 @@ require.config({
             deps: ['angular']
         },
         'angular-ui-router': {
+            deps: ['angular']
+        },
+        'angular-drag-drop-lists': {
             deps: ['angular']
         },
         'bootstrap': {
