@@ -20,6 +20,10 @@
     }
 }
 
+.singinout {
+    padding: 1em;
+}
+
 .ng-valid[required] {
     border-left: 5px solid #42A948; /* green */
 }
@@ -28,6 +32,13 @@
 }
 
 .todo-list {
+    position: relative;
+    .image {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
     /**
      * For the correct positioning of the placeholder element, the dnd-list and
      * it's children must have position: relative

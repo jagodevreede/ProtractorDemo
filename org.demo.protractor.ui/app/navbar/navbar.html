@@ -10,7 +10,7 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li ng-repeat="state in navCtrl.states"><a ui-sref="{{state.name}}" ng-if="state.name && (!user || (user && state.name != 'Register'))">{{state.name}}</a></li>
+        <li ng-repeat="state in navCtrl.states"><a ui-sref="{{state.name}}" ng-if="state.name && (!navCtrl.user || (navCtrl.user && state.name != 'Register'))">{{state.name}}</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -37,8 +37,8 @@
               </div>
             </li>
             <li ng-if="navCtrl.user" class="divider navbar-login-session-bg"></li>
-            <li ng-if="navCtrl.user" ng-click="navCtrl.signout()"><span class="clickable">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></span></li>
-            <li ng-if="!navCtrl.user" ng-click="navCtrl.signin()"><span class="clickable" >Sign In <span class="glyphicon glyphicon-log-in pull-right"></span></span></li>
+            <li ng-if="navCtrl.user" ng-click="navCtrl.signout()" class="singinout"><span class="clickable">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></span></li>
+            <li ng-if="!navCtrl.user" ng-click="navCtrl.signin()" class="singinout"><span class="clickable" >Sign In <span class="glyphicon glyphicon-log-in pull-right"></span></span></li>
           </ul>
         </li>
       </ul>

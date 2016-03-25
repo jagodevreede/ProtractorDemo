@@ -1,11 +1,16 @@
 import {TodoList} from './todoList.model';
 import {APP_SETTINGS} from '../app.settings';
+import {UserService} from '../blocks/user.service';
 
 class TodolistCtrl {
-    static $inject = ['Upload'];
+    static $inject = ['Upload', 'userService'];
     public todos: TodoList[] = [];
+    public user: User;
 
-    constructor(private Upload) {
+    constructor(private Upload, private userService: UserService) {
+        userService.getUser().then((u) => {
+            this.user = u;
+        });
         this.addNewList();
     }
 
