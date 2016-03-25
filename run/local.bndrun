@@ -18,6 +18,8 @@
 	org.apache.felix.http.api;version='[2.3,3)',\
 	org.apache.felix.http.servlet-api,\
 	org.apache.felix.http.whiteboard;version='[2.3,3)',\
+	org.apache.commons.fileupload;version='[1.2.2,1.2.2]',\
+	org.apache.commons.io;version='[2.4.0,2.4.0]',\
 	org.amdatu.web.resourcehandler;version='[1.0.9,2)',\
 	org.amdatu.web.rest.wink;version='[2.0.4,2.0.4]',\
 	org.amdatu.web.rest.jaxrs,\
@@ -30,6 +32,7 @@
 	com.google.guava;version='[19.0,19.0]',\
 	org.demo.protractor.security;version=latest,\
 	org.demo.protractor.ui;version=latest,\
+	org.demo.protractor.upload;version=latest,\
 	org.amdatu.email;version=1.0.1,\
 	org.amdatu.email.smtp;version=1.0.2,\
 	org.amdatu.configurator.autoconf;version=1.0.1
