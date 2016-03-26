@@ -10,26 +10,17 @@ abstract class BasePage {
         });
     }
 
-    switchToOriginalTab() {
+    switchTab(index: number) {
         browser.getAllWindowHandles().then(function (handles) {
-            browser.switchTo().window(handles[0]);
+            browser.switchTo().window(handles[index]).then(() => {
+                browser.sleep(500);
+            });
         });
     }
 
     closeTab() {
         browser.close();
-    }
-
-    checkSpecPassed(): void {
-        var passed = jasmine.getEnv().currentSpec.results().passed();
-        if(!passed) {
-            console.log('\nThere is a test failure, will close the browser in 10 seconds, you can still have a look whats wrong...');
-            // Wait a few seconds, so you can see the error, especially handy in a remote execution
-            browser.sleep(10000);
-            jasmine.getEnv().specFilter = function(spec) {
-                return false;
-            };
-        }
+        this.switchTab(0);
     }
 }
 

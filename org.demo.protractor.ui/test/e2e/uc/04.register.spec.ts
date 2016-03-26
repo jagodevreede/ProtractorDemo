@@ -21,7 +21,7 @@ describe('Login page', () => {
             address = a;
             username = a.substr(0, a.indexOf('@'));
         });
-        mail.switchToOriginalTab();
+        mail.switchTab(0);
     });
 
     it('should register a new user', () => {
@@ -29,18 +29,15 @@ describe('Login page', () => {
         register.password.sendKeys('1');
         register.email.sendKeys(address);
         register.registerButton.click();
+        // We are done close this tab
+        mail.closeTab();
     });
 
     it('should should get the activation link', () => {
         mail.openActivationLink();
-        // We are done close it
-        mail.switchToOriginalTab();
-        mail.closeTab();
     });
 
     it('should now be logged in', () => {
         expect(navBar.userNameLabel.getText()).toBe(username);
     });
-
-    afterEach(navBar.checkSpecPassed);
 });

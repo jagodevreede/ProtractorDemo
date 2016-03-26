@@ -7,6 +7,4 @@ describe('Home page', () => {
         page.open();
         expect(page.image.isDisplayed()).toBeTruthy();
     });
-
-    afterEach(page.checkSpecPassed);
 });

@@ -38,6 +38,4 @@ describe('Login page', () => {
         navBar.singInOrOutButton.click();
         expect(navBar.userNameLabel.getText()).toBe('Not logged in');
     });
-
-    afterEach(page.checkSpecPassed);
 });

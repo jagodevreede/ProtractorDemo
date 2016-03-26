@@ -25,6 +25,4 @@ describe('NavBar', () => {
         // Should be closed again
         expect(page.singInOrOutButton.isDisplayed()).toBeFalsy();
     });
-
-    afterEach(page.checkSpecPassed);
 });

@@ -7,7 +7,7 @@ class RegisterPage extends BasePage {
     email = element(by.id('email'));
 
     open() {
-        browser.get('/register');
+        browser.get('#/register');
     }
 
     isOpen() {

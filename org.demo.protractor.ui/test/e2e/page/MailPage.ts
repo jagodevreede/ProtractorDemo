@@ -20,9 +20,9 @@ class MailPage extends BasePage {
         let mail = element(by.css('#emailTable tbody tr a'));
         let EC = protractor.ExpectedConditions;
         let condition = EC.presenceOf(mail);
-        browser.wait(condition, 30000);
+        browser.wait(condition, 50000);
         mail.click();
-        let link = element(by.id('.activation-link-protractor-demo'));
+        let link = element(by.id('activation-link-protractor-demo'));
         condition = EC.presenceOf(link);
         browser.wait(condition, 5000);
         link.click();
