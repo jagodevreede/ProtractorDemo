@@ -1,0 +1,40 @@
+<project xmlns:jacoco="antlib:org.jacoco.ant" name="Generate coverage report with JaCoCo" default="report">
+	<property name="result.dir" location="./jacoco-report" />
+	<property name="result.report.dir" location="${result.dir}/site/jacoco" />
+	<property name="result.exec.file" location="jacoco-it.exec" />
+	<!--  Step 1: Import JaCoCo Ant tasks  -->
+	<taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+		<classpath path="cnf/jacoco/jacocoant.jar" />
+	</taskdef>
+	<target name="clean">
+		<delete dir="${result.dir}" />
+	</target>
+	<target name="report" depends="clean">
+		<!--  Step 3: Create coverage report  -->
+		<jacoco:report>
+			<!--
+ This task needs the collected execution data and ... 
+-->
+			<executiondata>
+				<file file="${result.exec.file}" />
+			</executiondata>
+			<!--  the class files and optional source files ...  -->
+			<structure name="JaCoCo Ant Example">
+				<classfiles>
+					<fileset dir=".">
+				         <include name="**/generated/*.jar"/>
+				     </fileset>
+				</classfiles>
+				<sourcefiles encoding="UTF-8">
+					<fileset dir=".">
+				         <include name="**/src/**"/>
+				     </fileset>
+				</sourcefiles>
+			</structure>
+			<!--  to produce reports in different formats.  -->
+			<html destdir="${result.report.dir}" />
+			<csv destfile="${result.report.dir}/report.csv" />
+			<xml destfile="${result.report.dir}/report.xml" />
+		</jacoco:report>
+	</target>
+</project>
