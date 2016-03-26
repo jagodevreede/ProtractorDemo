@@ -25,9 +25,12 @@ class MailPage extends BasePage {
         let link = element(by.id('activation-link-protractor-demo'));
         condition = EC.presenceOf(link);
         browser.wait(condition, 5000);
-        link.click();
-        // We can synchronize again
-        browser.ignoreSynchronization = true;
+        link.click().then(() => {
+            // We can synchronize again
+            browser.ignoreSynchronization = false;
+            // Wait a second for the page to load again
+            browser.sleep(1000);
+        });
     }
 }
 

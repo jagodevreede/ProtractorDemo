@@ -1,11 +1,13 @@
 import MailPage = require('../page/MailPage');
 import RegisterPage = require('../page/RegisterPage');
 import NavBar = require('../page/NavBar');
+import LoginPage = require('../page/LoginPage');
 
-describe('Login page', () => {
+describe('Register page', () => {
     let navBar: NavBar = new NavBar();
     let mail: MailPage = new MailPage();
     let register: RegisterPage = new RegisterPage();
+    let login: LoginPage = new LoginPage();
     let address: string;
     let username: string;
 
@@ -39,5 +41,29 @@ describe('Login page', () => {
 
     it('should now be logged in', () => {
         expect(navBar.userNameLabel.getText()).toBe(username);
+    });
+
+    it('should be able to logout the user', () => {
+        navBar.userNameLabel.click();
+        navBar.singInOrOutButton.click();
+        expect(navBar.userNameLabel.getText()).toBe('Not logged in');
+    });
+
+    it('should open the login page via the navbar', () => {
+        navBar.getNavigation('Login').click();
+        expect(login.isOpen()).toBeTruthy();
+    });
+
+    it('should be able to login user x', () => {
+        login.username.sendKeys(username);
+        login.password.sendKeys('1');
+        login.loginButton.click();
+        expect(navBar.userNameLabel.getText()).toBe(username);
+    });
+
+    it('should be able to logout the user', () => {
+        navBar.userNameLabel.click();
+        navBar.singInOrOutButton.click();
+        expect(navBar.userNameLabel.getText()).toBe('Not logged in');
     });
 });
