@@ -17,7 +17,7 @@
       border-left: 5px solid orange; /* orange */
     }
 </style>
-<button type="submit" class="btn btn-primary" ng-click="todolistCtrl.addNewList()">Add new To Do List</button>
+<button type="submit" id="addNewList" class="btn btn-primary" ng-click="todolistCtrl.addNewList()">Add new To Do List</button>
 <div class="panel panel-default" ng-repeat="todoList in todolistCtrl.todos">
   <div class="panel-heading">
     <h3 class="panel-title">To Do List ({{ $index + 1 }}) &nbsp;<span class="badge">{{todoList.list.length}}</span><span ng-click="todolistCtrl.removeList($index)" class="pull-right glyphicon glyphicon-remove"></span></h3>
