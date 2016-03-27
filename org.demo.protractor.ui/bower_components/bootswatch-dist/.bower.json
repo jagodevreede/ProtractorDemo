@@ -43,11 +43,11 @@
     "Gruntfile.js",
     ".gitignore"
   ],
-  "_release": "4efd0c5c0c",
+  "_release": "eca1bce70b",
   "_resolution": {
     "type": "branch",
     "branch": "paper",
-    "commit": "4efd0c5c0c0fb3d6ee85bf97f7214fcc2b169309"
+    "commit": "eca1bce70b2771324d509242fe4b24c337f63b0a"
   },
   "_source": "git://github.com/dbtek/bootswatch-dist.git",
   "_target": "paper",
