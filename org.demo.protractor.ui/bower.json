@@ -1,6 +1,6 @@
 {
-  "name": "angular2-starter",
-  "description": "Angular 2 Starter",
+  "name": "devcon2016_protractor_angular_demo",
+  "description": "Luminis DevCon 2016 - Demo of Protractor and Angular",
   "main": "index.js",
   "moduleType": [],
   "homepage": "",
