@@ -14,7 +14,7 @@ describe('Login page', () => {
         expect(navBar.userNameLabel.getText()).toBe('Not logged in');
     });
 
-    it('should not resister in the navigation', () => {
+    it('should have Register in the navbar', () => {
         expect(navBar.getNavigation('Register').isPresent()).toBeTruthy();
     });
 
@@ -29,13 +29,16 @@ describe('Login page', () => {
         expect(page.isOpen()).toBeFalsy();
     });
 
-    it('should not have resister anymore', () => {
+    it('should not have Register or Login anymore', () => {
         expect(navBar.getNavigation('Register').isPresent()).toBeFalsy();
+        expect(navBar.getNavigation('Login').isPresent()).toBeFalsy();
     });
 
     it('should be able to logout the user', () => {
         navBar.userNameLabel.click();
         navBar.singInOrOutButton.click();
         expect(navBar.userNameLabel.getText()).toBe('Not logged in');
+        expect(navBar.getNavigation('Register').isPresent()).toBeTruthy();
+        expect(navBar.getNavigation('Login').isPresent()).toBeTruthy();
     });
 });
