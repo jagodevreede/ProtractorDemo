@@ -20,7 +20,7 @@
 <button type="submit" id="addNewList" class="btn btn-primary" ng-click="todolistCtrl.addNewList()">Add new To Do List</button>
 <div class="panel panel-default" ng-repeat="todoList in todolistCtrl.todos">
   <div class="panel-heading">
-    <h3 class="panel-title">To Do List ({{ $index + 1 }}) &nbsp;<span class="badge">{{todoList.list.length}}</span><span ng-click="todolistCtrl.removeList($index)" class="pull-right glyphicon glyphicon-remove"></span></h3>
+    <h3 class="panel-title">To Do List ({{ $index + 1 }}) &nbsp;<span class="badge">{{todoList.list.length}}</span><span id="removeList{{$index}}" ng-click="todolistCtrl.removeList($index)" class="pull-right glyphicon glyphicon-remove"></span></h3>
   </div>
   <div class="panel-body todo-list">
     <div class="row">
@@ -54,7 +54,7 @@
                     dnd-effect-allowed="move"
                     dnd-selected="models.selected = item">
                 <span title="Remove todo" class="badge" ng-click="todoList.delTodo($index)">x</span>
-                <label><input type="checkbox" ng-model="todo.done"> {{item.name}}</label>
+                <label><input type="checkbox" ng-model="todo.done"><span class="description">{{item.name}}</span></label>
                 </li>
             </ul>
         </div>
