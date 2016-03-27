@@ -10,8 +10,7 @@ var tsProject = ts.createProject(config.root + 'tsconfig.json');
 var e2eTsProject = ts.createProject(config.root + 'tsconfig-e2e.json');
 var typingFiles = [
     'typings/main.d.ts',
-    'typings/main/*.d.ts',
-    'node_modules/angular2/typings/browser.d.ts'
+    'typings/main/*.d.ts'
 ];
 var tsUnitFiles = [].concat(config.tsTestFiles.unit);
 var tsE2EFiles = [].concat(config.tsTestFiles.e2e, config.tsTestFiles.page);
