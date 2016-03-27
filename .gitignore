@@ -6,3 +6,4 @@ org.demo.protractor.ui.ng2/typings
 org.demo.protractor.ui/bower_components
 jacoco-report
 jacoco-it.exec
+bin_test/
