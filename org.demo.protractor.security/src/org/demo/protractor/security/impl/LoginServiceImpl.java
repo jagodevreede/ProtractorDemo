@@ -69,10 +69,10 @@ public class LoginServiceImpl implements LoginService {
 		users.put(user.username.toLowerCase(), user);
 		
 		Message message = Message.Builder.create()
-				.from("protractor@demo.org")
+				.from("just@todo.it", "Just Todo It")
 				.recipient(user.email)
-				.subject("Please activate your account")
-				.htmlBody("Thanks for signing up! Please go to the following link to activate your account:<br/><br/>"
+				.subject("Please activate your Just Todo It account")
+				.htmlBody("Thanks for signing up! Please open the following link to activate your account:<br/><br/>"
 						+ "<a id=\"activation-link-protractor-demo\" href=\"http://127.0.0.1:8080/login/activate?username=" + user.username + "&activationtoken=" + user.activationToken + "\">Activate</a><br/><br/>"
 						+ "If you did not sign up, please ignore this email.").build();
 		
