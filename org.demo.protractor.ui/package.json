@@ -1,31 +1,19 @@
 {
-  "name": "angular2-starter",
-  "version": "0.2.0",
-  "author": "Antony Budianto",
-  "description": "Angular 2 Starter with Gulp, Bower, Karma, Jasmine, Protractor using SystemJS",
+  "name": "devcon2016_protractor_angular_demo",
+  "description": "Luminis DevCon 2016 - Demo of Protractor and Angular",
+  "version": "0.0.1",
   "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/antonybudianto/angular2-starter.git"
+    "url": "https://github.com/Japio007/ProtractorDemo.git"
   },
+  "author": "Jago de Vreede and Robert Zwerus",
   "scripts": {
     "postinstall": "typings install",
     "test": "gulp test",
     "coveralls": "node ./node_modules/coveralls/bin/coveralls.js < ./report/remap/lcov.info"
   },
-  "keywords": [
-    "angular2",
-    "starter",
-    "seed",
-    "gulp",
-    "travis",
-    "karma",
-    "jasmine",
-    "istanbul"
-  ],
-  "license": "MIT",
-  "bugs": {
-  },
+  "license": "GPL",
   "dependencies": {
   },
   "devDependencies": {
