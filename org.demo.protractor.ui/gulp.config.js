@@ -64,18 +64,10 @@ module.exports = function () {
                 'n:*': 'node_modules/*'
             },
             map: {
-                'angular2': 'n:angular2',
-                'rxjs': 'n:rxjs'
             },
             packages: {
                 'app': {
                     format: 'register',
-                    defaultExtension: 'js'
-                },
-                'angular2': {
-                    defaultExtension: 'js'
-                },
-                'rxjs': {
                     defaultExtension: 'js'
                 }
             }
