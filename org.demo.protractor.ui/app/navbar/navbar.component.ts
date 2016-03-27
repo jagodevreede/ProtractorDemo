@@ -1,10 +1,10 @@
 import {UserService} from '../blocks/user.service';
 class NavbarController {
 
-    static $inject = ['$state', '$rootScope', 'userService'];
+    static $inject = ['$state', '$rootScope', '$scope', 'userService'];
     states;
     user: User;
-    constructor(private $state, $rootScope, private userService: UserService) {
+    constructor(private $state, $rootScope, $scope, private userService: UserService) {
         this.states = $state.get();
         userService.getUser().then((u) => {
             this.user = u;
@@ -12,6 +12,10 @@ class NavbarController {
         $rootScope.$on('userChange', () => {
             this.user = userService.currentUser;
         });
+
+        $scope.stateFilter = (item) => {
+            return (!item.abstract && (item.showWhenLoggedIn || !this.user));
+        };
     }
 
     signout() {
@@ -23,7 +27,6 @@ class NavbarController {
     signin() {
         this.$state.go('Login');
     }
-
 }
 
 export class Navbar {
