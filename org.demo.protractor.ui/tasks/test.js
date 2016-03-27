@@ -1,28 +1,10 @@
 var gulp = require('gulp');
 var config = require('../gulp.config')();
-var Server = require('karma').Server;
 var gulpProtractor = require('gulp-protractor');
 var remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
 var args = require('yargs').argv;
 
-gulp.task('test', ['clean-report', 'unit-test']);
-
-gulp.task('unit-test', ['tsc'], function (done) {
-    new Server({
-        configFile: __dirname + '/../karma.conf.js',
-        singleRun: true
-    }, karmaDone).start();
-
-    function karmaDone (exitCode) {
-    	console.log('Test Done with exit code: ' + exitCode);
-    	remapCoverage();
-        if(exitCode === 0) {
-            done();
-        } else {
-            done('Unit test failed.');
-        }
-    }
-});
+gulp.task('test', ['e2e']);
 
 gulp.task('e2e', ['e2e-test']);
 gulp.task('driver-update', gulpProtractor['webdriver_update']);
