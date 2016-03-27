@@ -23,10 +23,10 @@
 	        <Value><![CDATA[true]]></Value>
 	      </Attribute>
 	      <Attribute adref='smtp-user'>
-	        <Value><![CDATA[xxxxxxxxxxx@gmail.com]]></Value>
+	        <Value><![CDATA[xxxxxxxxx@gmail.com]]></Value>
 	      </Attribute>
 	      <Attribute adref='smtp-password'>
-	        <Value><![CDATA[xxxxxxxxxxx]]></Value>
+	        <Value><![CDATA[xxxxxxxxx]]></Value>
 	      </Attribute>
     </Object>
     </Designate>
