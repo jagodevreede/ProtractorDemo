@@ -16,7 +16,7 @@ describe('Register page', () => {
         expect(register.isOpen()).toBeTruthy();
     });
 
-    it('should the email client and get a address', () => {
+    it('should open the email client and get a new email address', () => {
         mail.open();
         mail.getAddress().then((a) => {
             expect(a).toContain('@');
@@ -31,15 +31,12 @@ describe('Register page', () => {
         register.password.sendKeys('1');
         register.email.sendKeys(address);
         register.registerButton.click();
-        // We are done close this tab
+        // We are done, close this tab
         mail.closeTab();
     });
 
-    it('should should get the activation link', () => {
+    it('should get an activation link in an email, navigate to it and be logged in', () => {
         mail.openActivationLink();
-    });
-
-    it('should now be logged in', () => {
         expect(navBar.userNameLabel.getText()).toBe(username);
     });
 
