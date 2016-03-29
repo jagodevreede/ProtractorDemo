@@ -24,7 +24,7 @@ class TodoPage extends BasePage {
     }
 
     getTodo(todoListIndex: number, todoItemIndex: number) {
-        return this.todoLists.get(todoListIndex).all(this.todoItemsLocator).get(todoItemIndex).element(by.css('.description')).getText();
+        return this.getTodoItem(todoListIndex, todoItemIndex).element(by.css('.description')).getText();
     }
 
     addTodoItem(todoListIndex: number, todoItemDescription: string) {
@@ -36,8 +36,17 @@ class TodoPage extends BasePage {
         this.todoLists.get(todoListIndex).element(this.addButtonLocator).click();
     }
 
-    removeTodoItem(todoListIndex, todoItemIndex) {
-        return this.todoLists.get(todoListIndex).all(this.todoItemsLocator).get(todoItemIndex).element(this.removeButtonLocator).click();
+    removeTodoItem(todoListIndex: number, todoItemIndex: number) {
+        return this.getTodoItem(todoListIndex, todoItemIndex).element(this.removeButtonLocator).click();
+    }
+
+    dragAndDrop(fromListIndex: number, fromListItem: number, toListIndex: number) {
+       return browser.actions().dragAndDrop(this.getTodoItem(fromListIndex, fromListItem).getWebElement(),
+                                         this.getTodoItem(toListIndex, 0).getWebElement()).perform();
+    }
+
+    private getTodoItem(todoListIndex: number, todoItemIndex: number) {
+        return this.todoLists.get(todoListIndex).all(this.todoItemsLocator).get(todoItemIndex);
     }
 }
 
