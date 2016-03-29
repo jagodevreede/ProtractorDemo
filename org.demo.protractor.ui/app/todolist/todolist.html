@@ -53,7 +53,7 @@
                     dnd-moved="todoList.list.splice($index, 1)"
                     dnd-effect-allowed="move"
                     dnd-selected="models.selected = item">
-                <span title="Remove todo" class="badge" ng-click="todoList.delTodo($index)">x</span>
+                <span title="Remove todo" class="badge remove" ng-click="todoList.delTodo($index)">x</span>
                 <label><input type="checkbox" ng-model="todo.done"><span class="description">{{item.name}}</span></label>
                 </li>
             </ul>

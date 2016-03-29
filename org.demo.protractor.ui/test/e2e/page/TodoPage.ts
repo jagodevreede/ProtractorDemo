@@ -7,6 +7,7 @@ class TodoPage extends BasePage {
     todoItemsLocator = by.repeater('item in todoList.list');
     todoItemDescriptionLocator = by.id('todo');
     addButtonLocator = by.css('button.btn-primary');
+    removeButtonLocator = by.css('span.remove');
 
     open() {
         browser.get('#/todo');
@@ -33,6 +34,10 @@ class TodoPage extends BasePage {
             .element(this.todoItemDescriptionLocator)
             .sendKeys(webdriver.Key.CONTROL, 'a', webdriver.Key.NULL, todoItemDescription);
         return this.todoLists.get(todoListIndex).element(this.addButtonLocator).click();
+    }
+
+    removeTodoItem(todoListIndex, todoItemIndex) {
+        return this.todoLists.get(todoListIndex).all(this.todoItemsLocator).get(todoItemIndex).element(this.removeButtonLocator).click();
     }
 }
 
