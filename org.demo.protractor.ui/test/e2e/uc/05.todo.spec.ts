@@ -19,6 +19,17 @@ describe('Todo page', () => {
         expect(todo.getTodo(0, 0)).toEqual('test todo');
     });
 
+    it('should be able to create a second list', () => {
+        todo.addList.click();
+        expect(todo.getTodoLists().count()).toEqual(2);
+    });
+
+    it('should be able to add add a todo item in both lists', () => {
+        todo.addTodoItem(1, 'test todo other list');
+        expect(todo.getTodos(1).count()).toEqual(1);
+        expect(todo.getTodo(1, 0)).toEqual('test todo other list');
+    });
+
     it('should be able to remove a todo item', () => {
         todo.addTodoItem(0, 'test todo 2');
         expect(todo.getTodos(0).count()).toEqual(2);

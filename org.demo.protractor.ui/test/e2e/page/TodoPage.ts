@@ -1,11 +1,9 @@
-import webdriver = require('selenium-webdriver');
 import BasePage = require('./_basePage');
 
 class TodoPage extends BasePage {
     addList = element(by.id('addNewList'));
     todoLists = element.all(by.repeater('todoList in todolistCtrl.todos'));
     todoItemsLocator = by.repeater('item in todoList.list');
-    todoItemDescriptionLocator = by.id('todo');
     addButtonLocator = by.css('button.btn-primary');
     removeButtonLocator = by.css('span.remove');
 
@@ -21,19 +19,21 @@ class TodoPage extends BasePage {
         return this.todoLists;
     }
 
-    getTodos(todoListIndex) {
+    getTodos(todoListIndex: number) {
         return this.todoLists.get(todoListIndex).all(this.todoItemsLocator);
     }
 
-    getTodo(todoListIndex, todoItemIndex) {
+    getTodo(todoListIndex: number, todoItemIndex: number) {
         return this.todoLists.get(todoListIndex).all(this.todoItemsLocator).get(todoItemIndex).element(by.css('.description')).getText();
     }
 
-    addTodoItem(todoListIndex, todoItemDescription) {
-        this.todoLists.get(todoListIndex)
-            .element(this.todoItemDescriptionLocator)
-            .sendKeys(webdriver.Key.CONTROL, 'a', webdriver.Key.NULL, todoItemDescription);
-        return this.todoLists.get(todoListIndex).element(this.addButtonLocator).click();
+    addTodoItem(todoListIndex: number, todoItemDescription: string) {
+        let inputField = this.todoLists.get(todoListIndex)
+                                        .element(by.id('todo'));
+        inputField.clear();
+        inputField.sendKeys(todoItemDescription);
+
+        this.todoLists.get(todoListIndex).element(this.addButtonLocator).click();
     }
 
     removeTodoItem(todoListIndex, todoItemIndex) {
