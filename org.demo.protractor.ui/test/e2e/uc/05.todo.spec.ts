@@ -24,7 +24,7 @@ describe('Todo page', () => {
         expect(todo.getTodoLists().count()).toEqual(2);
     });
 
-    it('should be able to add add a todo item in both lists', () => {
+    it('should be able to add a todo item in the second list', () => {
         todo.addTodoItem(1, 'test todo other list');
         expect(todo.getTodos(1).count()).toEqual(1);
         expect(todo.getTodo(1, 0)).toEqual('test todo other list');
