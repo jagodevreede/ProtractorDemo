@@ -51,7 +51,7 @@ describe('Register page', () => {
         expect(login.isOpen()).toBeTruthy();
     });
 
-    it('should be able to login user x', () => {
+    it('should be able to login user', () => {
         login.username.sendKeys(username);
         login.password.sendKeys('1');
         login.loginButton.click();
