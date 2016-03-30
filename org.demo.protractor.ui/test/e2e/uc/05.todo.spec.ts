@@ -39,14 +39,4 @@ describe('Todo page', () => {
         expect(todo.getTodos(0).count()).toEqual(1);
         expect(todo.getTodo(0, 0)).toEqual('test todo 2');
     });
-
-    it('should be possible to drag and drop a todo item', () => {
-        expect(todo.getTodos(0).count()).toEqual(1);
-        expect(todo.getTodos(1).count()).toEqual(1);
-        todo.dragAndDrop(0, 0, 1).then(() => {
-            browser.sleep(15000);
-            expect(todo.getTodos(0).count()).toEqual(0);
-            expect(todo.getTodos(1).count()).toEqual(2);
-        });
-    });
 });
