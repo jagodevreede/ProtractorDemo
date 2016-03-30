@@ -8,7 +8,7 @@ gulp.task('test', ['e2e']);
 
 gulp.task('e2e', ['e2e-test']);
 gulp.task('driver-update', gulpProtractor['webdriver_update']);
-gulp.task('e2e-test', ['driver-update', 'tsc-e2e'], function () {
+gulp.task('e2e-test', ['clean-screenshots', 'driver-update', 'tsc-e2e'], function () {
     var specfile = (args.spec != undefined) ? args.spec : '';
     if (specfile != undefined && specfile < 10) specfile = "0"+specfile;
     gulp.src(config.e2e + '**/' + specfile + '*.spec.js')

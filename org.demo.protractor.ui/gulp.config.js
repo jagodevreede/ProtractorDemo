@@ -34,6 +34,9 @@ module.exports = function () {
     var report = {
         path: 'report/'
     };
+    var screenshotReport = {
+        path: 'report/screenshot'
+    };
     var liveServer = {
         dev: {
             port: 3000,
@@ -93,6 +96,7 @@ module.exports = function () {
         index: index,
         build: build,
         report: report,
+        screenshotReport: screenshotReport,
         assetsPath: assetsPath,
         tsFiles: tsFiles,
         tsTestFiles: tsTestFiles,

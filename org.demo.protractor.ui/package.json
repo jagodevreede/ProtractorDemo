@@ -14,8 +14,7 @@
     "coveralls": "node ./node_modules/coveralls/bin/coveralls.js < ./report/remap/lcov.info"
   },
   "license": "GPL-3.0",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "coveralls": "^2.11.6",
     "del": "~2.2.0",
@@ -37,11 +36,12 @@
     "live-server": "~0.9.2",
     "main-bower-files": "^2.11.1",
     "path": "^0.12.7",
+    "protractor-jasmine2-screenshot-reporter": "^0.3.0",
     "remap-istanbul": "~0.5.1",
     "require-dir": "~0.3.0",
     "run-sequence": "^1.1.5",
     "tslint": "^3.5.0",
-    "yargs": "^3.6.0",
-    "typings": "^0.6.8"
+    "typings": "^0.6.8",
+    "yargs": "^3.6.0"
   }
 }

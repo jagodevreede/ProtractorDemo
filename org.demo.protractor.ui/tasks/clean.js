@@ -15,6 +15,11 @@ gulp.task('clean-report', function () {
     return del([config.report.path]);
 });
 
+/* Clean report folder */
+gulp.task('clean-screenshots', function () {
+    return del([config.screenshotReport.path]);
+});
+
 /* Clean sass compile */
 gulp.task('clean-sass', function () {
     return del([config.assetsPath.styles + '**/*.css']);
