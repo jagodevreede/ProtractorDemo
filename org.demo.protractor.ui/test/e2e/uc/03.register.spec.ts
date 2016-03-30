@@ -42,8 +42,7 @@ describe('Register page', () => {
     });
 
     it('should be able to logout the user', () => {
-        navBar.userNameLabel.click();
-        navBar.singInOrOutButton.click();
+        login.logout();
         expect(navBar.userNameLabel.getText()).toBe('Not logged in');
     });
 
@@ -53,15 +52,12 @@ describe('Register page', () => {
     });
 
     it('should be able to login user', () => {
-        login.username.sendKeys(username);
-        login.password.sendKeys('1');
-        login.loginButton.click();
+        login.login(username, '1');
         expect(navBar.userNameLabel.getText()).toBe(username);
     });
 
     it('should be able to logout the user', () => {
-        navBar.userNameLabel.click();
-        navBar.singInOrOutButton.click();
+        login.logout();
         expect(navBar.userNameLabel.getText()).toBe('Not logged in');
     });
 });

@@ -19,9 +19,7 @@ describe('Login page', () => {
     });
 
     it('should be able to login user x', () => {
-        page.username.sendKeys('x');
-        page.password.sendKeys('x');
-        page.loginButton.click();
+        page.login('x', 'x');
         expect(navBar.userNameLabel.getText()).toBe('x');
     });
 
@@ -32,13 +30,5 @@ describe('Login page', () => {
     it('should not have Register or Login anymore', () => {
         expect(navBar.getNavigation('Register').isPresent()).toBeFalsy();
         expect(navBar.getNavigation('Login').isPresent()).toBeFalsy();
-    });
-
-    it('should be able to logout the user', () => {
-        navBar.userNameLabel.click();
-        navBar.singInOrOutButton.click();
-        expect(navBar.userNameLabel.getText()).toBe('Not logged in');
-        expect(navBar.getNavigation('Register').isPresent()).toBeTruthy();
-        expect(navBar.getNavigation('Login').isPresent()).toBeTruthy();
     });
 });

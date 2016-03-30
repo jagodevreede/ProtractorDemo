@@ -1,7 +1,13 @@
 import TodoPage = require('../page/TodoPage');
+import LoginPage = require('../page/LoginPage');
 
 describe('Todo page', () => {
     let todo: TodoPage = new TodoPage();
+    let loginPage: LoginPage = new LoginPage();
+
+    it('should login as user x', () => {
+        loginPage.ensureLogin('x', 'x');
+    });
 
     it('should open the todo page', () => {
         todo.open();
