@@ -1,5 +1,5 @@
 cd org.demo.protractor.ui
-gulp e2e --spec=3
+gulp e2e
 cd ..
 echo "Kill the app"
 read
