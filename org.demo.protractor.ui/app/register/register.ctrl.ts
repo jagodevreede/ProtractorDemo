@@ -11,10 +11,12 @@ class RegisterCtrl {
     }
     submitted = false;
     onSubmit() {
-        this.submitted = true;
-        this.userService.register(this.user).then(data => {
-            // noop
-        }, error => console.error('Could not create user.'));
+        if (window.confirm('Are all details correct?')) {
+            this.submitted = true;
+            this.userService.register(this.user).then(data => {
+                // noop
+            }, error => console.error('Could not create user.'));
+        }
     }
 }
 

@@ -31,6 +31,7 @@ describe('Register page', () => {
         register.password.sendKeys('1');
         register.email.sendKeys(address);
         register.registerButton.click();
+        browser.switchTo().alert().accept();
         // We are done, close this tab
         mail.closeTab();
     });
