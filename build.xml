@@ -26,9 +26,8 @@
 				     </fileset>
 				</classfiles>
 				<sourcefiles encoding="UTF-8">
-					<fileset dir=".">
-				         <include name="**/src/**"/>
-				     </fileset>
+					<fileset dir="./org.demo.protractor.security/src"/>
+					<fileset dir="./org.demo.protractor.upload/src"/>
 				</sourcefiles>
 			</structure>
 			<!--  to produce reports in different formats.  -->
