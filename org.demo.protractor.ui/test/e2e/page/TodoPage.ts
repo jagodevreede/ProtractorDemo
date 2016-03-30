@@ -1,6 +1,8 @@
 import BasePage = require('./_basePage');
+import NavBar = require('./NavBar');
 
 class TodoPage extends BasePage {
+    navBar: NavBar = new NavBar();
     addList = element(by.id('addNewList'));
     todoLists = element.all(by.repeater('todoList in todolistCtrl.todos'));
     todoItemsLocator = by.repeater('item in todoList.list');
@@ -8,7 +10,7 @@ class TodoPage extends BasePage {
     removeButtonLocator = by.css('span.remove');
 
     open() {
-        browser.get('#/todo');
+        this.navBar.getNavigation('Todo').click();
     }
 
     isOpen() {
