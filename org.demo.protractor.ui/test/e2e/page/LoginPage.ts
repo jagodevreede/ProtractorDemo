@@ -30,12 +30,14 @@ class LoginPage extends BasePage {
     }
 
     ensureLogin(username: string, password: string) {
-        this.isOpen().then((open) => {
-            if (!open) {
-                 this.open();
-            }
-            this.login(username, password);
-        });
+        if (this.loggedInUser !== username) {
+            this.isOpen().then((open) => {
+                if (!open) {
+                    this.open();
+                }
+                this.login(username, password);
+            });
+        }
     }
 
 }
