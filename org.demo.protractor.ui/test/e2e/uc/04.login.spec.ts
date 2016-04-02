@@ -27,8 +27,9 @@ describe('Login page', () => {
         expect(page.isOpen()).toBeFalsy();
     });
 
-    it('should not have Register or Login anymore', () => {
+    it('should display the right buttons', () => {
         expect(navBar.getNavigation('Register').isPresent()).toBeFalsy();
         expect(navBar.getNavigation('Login').isPresent()).toBeFalsy();
+        expect(navBar.getNavigation('Todo').isPresent()).toBeTruthy();
     });
 });

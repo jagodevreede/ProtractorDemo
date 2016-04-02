@@ -11,8 +11,8 @@ describe('NavBar', () => {
         expect(page.getNavigation('Home').isPresent()).toBeTruthy();
     });
 
-    it('should display the todo button', () => {
-        expect(page.getNavigation('Todo').isPresent()).toBeTruthy();
+    it('should not display the todo button', () => {
+        expect(page.getNavigation('Todo').isPresent()).toBeFalsy();
     });
 
     it('should be able to open the user pane', () => {

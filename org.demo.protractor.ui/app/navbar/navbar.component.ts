@@ -14,7 +14,21 @@ class NavbarController {
         });
 
         $scope.stateFilter = (item) => {
-            return (!item.abstract && (item.showWhenLoggedIn || !this.user));
+            if (item.abstract) {
+                return false;
+            }
+            if (!item.showWhen) {
+                return true;
+            }
+            switch (item.showWhen) {
+                case 'always':
+                    return true;
+                case 'loggedIn':
+                    return !!this.user;
+                case 'loggedOut':
+                    return !this.user;
+            }
+            return false;
         };
     }
 
