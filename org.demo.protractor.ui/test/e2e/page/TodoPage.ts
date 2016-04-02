@@ -6,8 +6,6 @@ class TodoPage extends BasePage {
     addList = element(by.id('addNewList'));
     todoLists = element.all(by.repeater('todoList in todolistCtrl.todos'));
     todoItemsLocator = by.repeater('item in todoList.list');
-    addButtonLocator = by.css('button.btn-primary');
-    removeButtonLocator = by.css('span.remove');
 
     open() {
         this.navBar.getNavigation('Todo').click();
@@ -26,20 +24,31 @@ class TodoPage extends BasePage {
     }
 
     getTodo(todoListIndex: number, todoItemIndex: number) {
-        return this.todoLists.get(todoListIndex).all(this.todoItemsLocator).get(todoItemIndex).element(by.css('.description')).getText();
+        return this.todoLists
+            .get(todoListIndex)
+            .all(this.todoItemsLocator)
+            .get(todoItemIndex)
+            .element(by.css('.description'))
+            .getText();
     }
 
     addTodoItem(todoListIndex: number, todoItemDescription: string) {
-        let inputField = this.todoLists.get(todoListIndex)
-                                        .element(by.id('todo'));
+        let inputField = this.todoLists
+            .get(todoListIndex)
+            .element(by.id('todo'));
         inputField.clear();
         inputField.sendKeys(todoItemDescription);
 
-        this.todoLists.get(todoListIndex).element(this.addButtonLocator).click();
+        this.todoLists.get(todoListIndex).element(by.css('button.btn-primary')).click();
     }
 
     removeTodoItem(todoListIndex: number, todoItemIndex: number) {
-        return this.todoLists.get(todoListIndex).all(this.todoItemsLocator).get(todoItemIndex).element(this.removeButtonLocator).click();
+        return this.todoLists
+            .get(todoListIndex)
+            .all(this.todoItemsLocator)
+            .get(todoItemIndex)
+            .element(by.css('span.remove'))
+            .click();
     }
 
     uploadImage(todoListIndex: number): webdriver.promise.Promise<any> {
@@ -47,7 +56,12 @@ class TodoPage extends BasePage {
     }
 
     isImageUploaded(todoListIndex: number): webdriver.promise.Promise<any> {
-        return this.isFileUploaded(this.todoLists.get(todoListIndex).element(by.css('img.upload-image')).locator());
+        return this.isFileUploaded(
+            this.todoLists
+                .get(todoListIndex)
+                .element(by.css('img.upload-image'))
+                .locator()
+        );
     }
 }
 
