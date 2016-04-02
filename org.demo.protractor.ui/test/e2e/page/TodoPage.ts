@@ -35,7 +35,7 @@ class TodoPage extends BasePage {
     addTodoItem(todoListIndex: number, todoItemDescription: string) {
         let inputField = this.todoLists
             .get(todoListIndex)
-            .element(by.id('todo'));
+            .element(by.model('todoList.todo.name'));
         inputField.clear();
         inputField.sendKeys(todoItemDescription);
 
