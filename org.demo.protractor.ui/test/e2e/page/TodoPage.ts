@@ -38,8 +38,16 @@ class TodoPage extends BasePage {
         this.todoLists.get(todoListIndex).element(this.addButtonLocator).click();
     }
 
-    removeTodoItem(todoListIndex, todoItemIndex) {
+    removeTodoItem(todoListIndex: number, todoItemIndex: number) {
         return this.todoLists.get(todoListIndex).all(this.todoItemsLocator).get(todoItemIndex).element(this.removeButtonLocator).click();
+    }
+
+    uploadImage(todoListIndex: number): webdriver.promise.Promise<any> {
+        return this.uploadFile('protractor.jpeg', this.todoLists.get(todoListIndex));
+    }
+
+    isImageUploaded(todoListIndex: number): webdriver.promise.Promise<any> {
+        return this.isFileUploaded(this.todoLists.get(todoListIndex).element(by.css('img.upload-image')).locator());
     }
 }
 

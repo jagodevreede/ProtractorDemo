@@ -24,7 +24,7 @@
   </div>
   <div class="panel-body todo-list">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="form-group">
                 <form ng-submit="todoList.addTodo()" name="form">
                     <label for="todo">To Do</label>
@@ -35,17 +35,6 @@
                     </div>
                 </form>
             </div>
-            <div class="image" ng-if="todolistCtrl.user">
-                <div ng-if="!todoList.imageid" class="button" ngf-select ng-model="todoList.file" name="file" ngf-pattern="'image/*'"
-                     ngf-accept="'image/*'" ngf-max-size="20MB">Select a image</div>
-                <span ng-if="todoList.file && !todoList.imageid" ng-bind="todoList.file.name"></span>
-                <button ng-if="todoList.file && !todoList.imageid" ng-click="todolistCtrl.upload(todoList)">Upload</button>
-                <img ng-if="todoList.imageid" ng-src="{{todoList.imageid}}" width="100px" height="100px"/>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-5">
             <ul class="list-group" dnd-list="todoList.list">
                 <li ng-repeat="item in todoList.list"
                     class="list-group-item"
@@ -53,10 +42,18 @@
                     dnd-moved="todoList.list.splice($index, 1)"
                     dnd-effect-allowed="move"
                     dnd-selected="models.selected = item">
-                <span title="Remove todo" class="badge remove" ng-click="todoList.delTodo($index)">x</span>
-                <label><input type="checkbox" ng-model="todo.done"><span class="description">{{item.name}}</span></label>
+                    <span title="Remove todo" class="badge remove" ng-click="todoList.delTodo($index)">x</span>
+                    <label><input type="checkbox" ng-model="todo.done"><span class="description">{{item.name}}</span></label>
                 </li>
             </ul>
+        </div>
+        <div class="col-md-4">
+            <div class="image" ng-if="todolistCtrl.user">
+                <input type="file" class="uploadFile btn btn-primary" ng-if="!todoList.imageid" ngf-select ng-model="todoList.file" name="file" ngf-pattern="'image/*'"
+                     ngf-accept="'image/*'" ngf-max-size="20MB">
+                <button class="submit" ng-if="todoList.file && !todoList.imageid" ng-click="todolistCtrl.upload(todoList)">Upload</button>
+                <img class="upload-image" ng-if="todoList.imageid" ng-src="{{todoList.imageid}}"/>
+            </div>
         </div>
     </div>
   </div>

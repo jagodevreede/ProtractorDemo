@@ -46,10 +46,15 @@ span.clickable:focus {
 
 .todo-list {
     position: relative;
+
+
     .image {
-        position: absolute;
-        top: 0;
-        right: 0;
+        position: relative;
+        float: right;
+        img {
+            max-width: 300px;
+            max-height: 300px;
+        }
     }
 
     /**

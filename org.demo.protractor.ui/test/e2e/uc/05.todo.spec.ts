@@ -45,4 +45,10 @@ describe('Todo page', () => {
         expect(todo.getTodos(0).count()).toEqual(1);
         expect(todo.getTodo(0, 0)).toEqual('test todo 2');
     });
+
+    it('should be able to upload an image', () => {
+        expect(todo.isImageUploaded(1)).toBeFalsy();
+        todo.uploadImage(1);
+        expect(todo.isImageUploaded(1)).toBeTruthy();
+    });
 });
