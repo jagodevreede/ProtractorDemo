@@ -5,7 +5,7 @@ class TodoPage extends BasePage {
     navBar: NavBar = new NavBar();
     addList = element(by.id('addNewList'));
     todoLists = element.all(by.repeater('todoList in todolistCtrl.todos'));
-    todoItemsLocator = by.repeater('item in todoList.list');
+    todoItemsLocator = by.xpath('.//ul/li');
 
     open() {
         this.navBar.getNavigation('Todo').click();
