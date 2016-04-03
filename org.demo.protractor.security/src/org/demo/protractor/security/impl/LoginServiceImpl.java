@@ -26,8 +26,8 @@ public class LoginServiceImpl implements LoginService {
 	@Start
 	public void start() {
 		User user = new User();
-		user.username = "x";
-		user.password = "x";
+		user.username = "demo";
+		user.password = "d3m0";
 		user.email = "demo@demo.org";
 		user.active = true;
 		users.put(user.username.toLowerCase(), user);

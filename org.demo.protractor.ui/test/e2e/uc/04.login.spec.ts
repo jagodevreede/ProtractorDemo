@@ -18,9 +18,9 @@ describe('Login page', () => {
         expect(navBar.getNavigation('Register').isPresent()).toBeTruthy();
     });
 
-    it('should be able to login user x', () => {
-        page.login('x', 'x');
-        expect(navBar.userNameLabel.getText()).toBe('x');
+    it('should be able to login user "demo"', () => {
+        page.login('demo', 'd3m0');
+        expect(navBar.userNameLabel.getText()).toBe('demo');
     });
 
     it('should no longer be on the login page', () => {
