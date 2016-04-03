@@ -5,8 +5,8 @@ describe('Todo page', () => {
     let todo: TodoPage = new TodoPage();
     let loginPage: LoginPage = new LoginPage();
 
-    it('should login as user x', () => {
-        loginPage.ensureLogin('x', 'x');
+    it('should login as user "demo"', () => {
+        loginPage.ensureLogin('demo', 'd3m0');
     });
 
     it('should open the todo page', () => {
