@@ -3,7 +3,7 @@ var config = require('../gulp.config')();
 var del = require('del');
 
 /* Run all clean tasks */
-gulp.task('clean', ['clean-build', 'clean-report', 'clean-ts', 'clean-sass']);
+gulp.task('clean', ['clean-build', 'clean-ts', 'clean-sass']);
 
 /* Clean build folder */
 gulp.task('clean-build', function () {
