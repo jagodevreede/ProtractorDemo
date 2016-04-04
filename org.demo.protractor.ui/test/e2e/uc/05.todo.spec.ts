@@ -15,7 +15,7 @@ describe('Todo page', () => {
     });
 
     it('should have one todo list with zero items', () => {
-        expect(todo.getTodoLists().count()).toEqual(1);
+        expect(todo.todoLists.count()).toEqual(1);
         expect(todo.getTodos(0).count()).toEqual(0);
     });
 
@@ -27,7 +27,7 @@ describe('Todo page', () => {
 
     it('should be able to create a second list', () => {
         todo.addList.click();
-        expect(todo.getTodoLists().count()).toEqual(2);
+        expect(todo.todoLists.count()).toEqual(2);
     });
 
     it('should be able to add a todo item in the second list', () => {
@@ -48,7 +48,7 @@ describe('Todo page', () => {
 
     it('should be able to upload an image', () => {
         expect(todo.isImageUploaded(1)).toBeFalsy();
-        todo.uploadImage(1);
+        todo.uploadImage(1, 'protractor.jpeg');
         expect(todo.isImageUploaded(1)).toBeTruthy();
     });
 });

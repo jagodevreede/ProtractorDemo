@@ -1,5 +1,3 @@
-let path = require('path');
-
 abstract class BasePage {
 
     abstract open();
@@ -23,16 +21,6 @@ abstract class BasePage {
     closeTab() {
         browser.close();
         this.switchTab(0);
-    }
-
-    uploadFile(filename: string, base: protractor.ElementFinder): webdriver.promise.Promise<any> {
-        let absolutePath = path.resolve('test/e2e/assets', filename);
-        base.element(by.css('input[type="file"]')).sendKeys(absolutePath);
-        return base.element(by.css('button.submit')).click();
-    }
-
-    isFileUploaded(uploadLocator: webdriver.Locator): webdriver.promise.Promise<any> {
-        return element(uploadLocator).isPresent();
     }
 }
 

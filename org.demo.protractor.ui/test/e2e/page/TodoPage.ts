@@ -1,5 +1,6 @@
 import BasePage = require('./_basePage');
 import NavBar = require('./NavBar');
+let path = require('path');
 
 class TodoPage extends BasePage {
     navBar: NavBar = new NavBar();
@@ -14,13 +15,9 @@ class TodoPage extends BasePage {
     isOpen() {
         return this.addList.isPresent();
     }
-    
+
     getTodos(todoListIndex: number) {
         return this.todoLists.get(todoListIndex).all(this.todoItemsLocator);
-    }
-
-    getTodoLists() {
-        return this.todoLists;
     }
 
     getTodo(todoListIndex: number, todoItemIndex: number) {
@@ -51,17 +48,17 @@ class TodoPage extends BasePage {
             .click();
     }
 
-    uploadImage(todoListIndex: number): webdriver.promise.Promise<any> {
-        return this.uploadFile('protractor.jpeg', this.todoLists.get(todoListIndex));
+    uploadImage(todoListIndex: number, filename: string) {
+        let absolutePath = path.resolve('test/e2e/assets', filename);
+        this.todoLists.get(todoListIndex).element(by.css('input[type="file"]')).sendKeys(absolutePath);
+        return this.todoLists.get(todoListIndex).element(by.css('button.submit')).click();
     }
 
-    isImageUploaded(todoListIndex: number): webdriver.promise.Promise<any> {
-        return this.isFileUploaded(
-            this.todoLists
+    isImageUploaded(todoListIndex: number) {
+        return this.todoLists
                 .get(todoListIndex)
                 .element(by.css('img.upload-image'))
-                .locator()
-        );
+                .isPresent();
     }
 }
 
