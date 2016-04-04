@@ -1,7 +1,6 @@
 /bin/
 /node_modules
 /build
-/report
 /typings
 .DS_Store
 app/**/*.js
