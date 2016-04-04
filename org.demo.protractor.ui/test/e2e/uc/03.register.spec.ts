@@ -45,19 +45,4 @@ describe('Register page', () => {
         login.logout();
         expect(navBar.userNameLabel.getText()).toBe('Not logged in');
     });
-
-    it('should open the login page via the navbar', () => {
-        navBar.getNavigation('Login').click();
-        expect(login.isOpen()).toBeTruthy();
-    });
-
-    it('should be able to login user', () => {
-        login.login(username, '1');
-        expect(navBar.userNameLabel.getText()).toBe(username);
-    });
-
-    it('should be able to logout the user', () => {
-        login.logout();
-        expect(navBar.userNameLabel.getText()).toBe('Not logged in');
-    });
 });
