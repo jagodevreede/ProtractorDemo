@@ -26,7 +26,7 @@ class LoginPage extends BasePage {
     logout() {
         this.loggedInUser = null;
         this.navBar.userNameLabel.click();
-        this.navBar.singInOrOutButton.click();
+        this.navBar.signInOrOutButton.click();
     }
 
     ensureLogin(username: string, password: string) {

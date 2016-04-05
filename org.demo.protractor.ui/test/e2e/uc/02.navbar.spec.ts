@@ -17,12 +17,12 @@ describe('NavBar', () => {
 
     it('should be able to open the user pane', () => {
         // Closed by default
-        expect(page.singInOrOutButton.isDisplayed()).toBeFalsy();
+        expect(page.signInOrOutButton.isDisplayed()).toBeFalsy();
         page.userNameLabel.click();
         // Should now be open
-        expect(page.singInOrOutButton.isDisplayed()).toBeTruthy();
+        expect(page.signInOrOutButton.isDisplayed()).toBeTruthy();
         page.userNameLabel.click();
         // Should be closed again
-        expect(page.singInOrOutButton.isDisplayed()).toBeFalsy();
+        expect(page.signInOrOutButton.isDisplayed()).toBeFalsy();
     });
 });

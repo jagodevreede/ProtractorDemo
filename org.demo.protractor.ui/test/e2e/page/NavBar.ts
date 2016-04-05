@@ -3,7 +3,7 @@ import BasePage = require('./_basePage');
 class NavBar extends BasePage {
 
     userNameLabel = element(by.id('user-name-label'));
-    singInOrOutButton = element(by.css('.singinout'));
+    signInOrOutButton = element(by.css('.signinout'));
 
     open() {
         browser.get('/');
