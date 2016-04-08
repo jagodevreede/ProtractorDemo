@@ -77,11 +77,13 @@ function compileTsWithProject(project, files, watchMode) {
     var res = gulp.src(allFiles, {
             base: '.'
         })
+        /* disabled for demo
         .pipe(tslint())
         .pipe(tslint.report('prose', {
             summarizeFailureOutput: true,
             emitError: false
         }))
+        */
         .pipe(sourcemaps.init())
         .pipe(ts(project))
         .on('error', function () {
