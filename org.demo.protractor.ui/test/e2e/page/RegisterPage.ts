@@ -1,7 +1,6 @@
-import BasePage = require('./_basePage');
 import NavBar = require('./NavBar');
 
-class RegisterPage extends BasePage {
+class RegisterPage {
     navBar: NavBar = new NavBar();
     registerButton = element(by.id('register-btn'));
     username = element(by.id('username'));

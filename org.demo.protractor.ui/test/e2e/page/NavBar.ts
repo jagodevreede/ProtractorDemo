@@ -1,6 +1,4 @@
-import BasePage = require('./_basePage');
-
-class NavBar extends BasePage {
+class NavBar {
 
     userNameLabel = element(by.id('user-name-label'));
     signInOrOutButton = element(by.css('.signinout'));

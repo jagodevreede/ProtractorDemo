@@ -1,8 +1,7 @@
-import BasePage = require('./_basePage');
 import NavBar = require('./NavBar');
 let path = require('path');
 
-class TodoPage extends BasePage {
+class TodoPage {
     navBar: NavBar = new NavBar();
     todoItemsLocator = by.xpath('.//ul/li');
     addList = element(by.id('addNewList'));

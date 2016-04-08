@@ -1,7 +1,6 @@
-import BasePage = require('./_basePage');
 import NavBar = require('./NavBar');
 
-class LoginPage extends BasePage {
+class LoginPage {
     navBar: NavBar = new NavBar();
     loginButton = element(by.id('login-btn'));
     username = element(by.id('username'));

@@ -1,7 +1,6 @@
-import BasePage = require('./_basePage');
 import NavBar = require('./NavBar');
 
-class HomePage extends BasePage {
+class HomePage {
     navBar: NavBar = new NavBar();
     image = element(by.css('img'));
 
