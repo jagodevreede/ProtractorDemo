@@ -7,3 +7,5 @@ org.demo.protractor.ui/bower_components
 jacoco-report
 jacoco-it.exec
 bin_test/
+org.demo.protractor.ui.ng2/.idea
+org.demo.protractor.ui/report
