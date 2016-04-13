@@ -32,4 +32,9 @@ describe('Login page', () => {
         expect(navBar.getNavigation('Login').isPresent()).toBeFalsy();
         expect(navBar.getNavigation('Todo').isPresent()).toBeTruthy();
     });
+
+    it('should be able to logout', () => {
+        page.logout();
+        expect(navBar.userNameLabel.getText()).toBe('Not logged in');
+    });
 });
