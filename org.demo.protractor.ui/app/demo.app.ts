@@ -1,3 +1,4 @@
+/// <amd-dependency path="../types/libs.d.ts" />
 /// <amd-dependency path="angular-ui-router"/>
 /// <amd-dependency path="angular-sanitize"/>
 /// <amd-dependency path="angular-drag-drop-lists"/>
