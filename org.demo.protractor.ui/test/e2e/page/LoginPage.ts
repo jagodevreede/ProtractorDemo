@@ -7,6 +7,12 @@ class LoginPage {
     password = element(by.id('password'));
     private loggedInUser: string;
 
+    constructor() {
+        this.navBar.userNameLabel.getText().then((name) => {
+            this.loggedInUser = name;
+        });
+    }
+
     open() {
         this.navBar.getNavigation('Login').click();
     }
