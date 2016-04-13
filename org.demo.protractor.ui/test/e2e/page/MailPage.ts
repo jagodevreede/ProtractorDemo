@@ -47,7 +47,7 @@ class MailPage {
         link.click().then(() => {
             // We can synchronize again
             browser.ignoreSynchronization = false;
-            // Wait a second for the page to load again
+            // Wait for Todo app to open with the just activated user account
             browser.sleep(1000);
         });
     }
