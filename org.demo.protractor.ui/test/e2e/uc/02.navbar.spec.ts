@@ -15,7 +15,7 @@ describe('NavBar', () => {
         expect(page.getNavigation('Todo').isPresent()).toBeFalsy();
     });
 
-    it('should be able to open the user pane', () => {
+    it('should be able to open the user dropdown', () => {
         // Closed by default
         expect(page.signInOrOutButton.isDisplayed()).toBeFalsy();
         page.userNameLabel.click();
