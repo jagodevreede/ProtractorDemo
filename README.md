@@ -1,5 +1,6 @@
 # Luminis DevCon 2016 - Automated Testing of your Angular Front-end
 
+* doc - presentation, screenshots, video
 * org.demo.protractor.security - Java project for authentication
 * org.demo.protractor.ui - Angular 1 frontend with e2e tests
 * org.demo.protractor.ui.ng2 - Angular 2 frontend with e2e tests
