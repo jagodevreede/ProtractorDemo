@@ -4,7 +4,7 @@ let path = require('path');
 class TodoPage {
     navBar: NavBar = new NavBar();
     todoItemsLocator = by.xpath('.//ul/li');
-    addList = element(by.id('addNewList'));
+    addList = element(by.css('button[ng-click^="todolistCtrl.addNewList()"]'));
     todoLists = element.all(by.repeater('todoList in todolistCtrl.todos'));
 
     open() {
