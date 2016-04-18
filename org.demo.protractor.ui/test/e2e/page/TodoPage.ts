@@ -15,15 +15,18 @@ class TodoPage {
         return this.addList.isPresent();
     }
 
-    getTodos(todoListIndex: number) {
+    getTodoList(todoListIndex: number) {
         return this.todoLists
-            .get(todoListIndex)
+            .get(todoListIndex);
+    }
+
+    getTodos(todoListIndex: number) {
+        return this.getTodoList(todoListIndex)
             .all(this.todoItemsLocator);
     }
 
     getTodo(todoListIndex: number, todoItemIndex: number) {
-        return this.todoLists
-            .get(todoListIndex)
+        return this.getTodoList(todoListIndex)
             .all(this.todoItemsLocator)
             .get(todoItemIndex)
             .element(by.css('.description'))
@@ -31,22 +34,20 @@ class TodoPage {
     }
 
     addTodoItem(todoListIndex: number, todoItemDescription: string) {
-        let inputField = this.todoLists
-            .get(todoListIndex)
+        let todoList = this.getTodoList(todoListIndex);
+        let inputField = todoList
             .element(by.model('todoList.todo.name'));
         
         inputField.clear();
         inputField.sendKeys(todoItemDescription);
 
-        this.todoLists
-            .get(todoListIndex)
+        todoList
             .element(by.css('button.btn-primary'))
             .click();
     }
 
     removeTodoItem(todoListIndex: number, todoItemIndex: number) {
-        return this.todoLists
-            .get(todoListIndex)
+        return this.getTodoList(todoListIndex)
             .all(this.todoItemsLocator)
             .get(todoItemIndex)
             .element(by.css('span.remove'))
@@ -55,19 +56,17 @@ class TodoPage {
 
     uploadImage(todoListIndex: number, filename: string) {
         let absolutePath = path.resolve('test/e2e/assets', filename);
-        this.todoLists
-            .get(todoListIndex)
+        let todoList = this.getTodoList(todoListIndex);
+        todoList
             .element(by.css('input[type="file"]'))
             .sendKeys(absolutePath);
-        return this.todoLists
-            .get(todoListIndex)
+        return todoList
             .element(by.css('button.submit'))
             .click();
     }
 
     isImageUploaded(todoListIndex: number) {
-        return this.todoLists
-            .get(todoListIndex)
+        return this.getTodoList(todoListIndex)
             .element(by.css('img.upload-image'))
             .isPresent();
     }
