@@ -1,6 +1,6 @@
 class NavBar {
 
-    userNameLabel = element(by.id('user-name-label'));
+    userNameLabel = null; // FIXME: Add correct selector
     signInOrOutButton = element(by.css('.signinout'));
 
     open() {
